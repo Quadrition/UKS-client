@@ -13,6 +13,8 @@ import { NavbarNonAuthComponent } from './components/navbar/navbar-non-auth/navb
 import { NavbarUserComponent } from './components/navbar/navbar-user/navbar-user.component';
 import { SharedModule } from './components/shared/shared.module';
 import { LabelModule } from './components/label/label.module';
+import { IssueModule } from './components/issue/issue.module';
+import { ProjectModule } from './components/project/project.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { LabelModule } from './components/label/label.module';
     AppRoutingModule,
     LabelModule,
     MaterialModule,
+    IssueModule,
+    ProjectModule,
     AuthModule,
     SharedModule,
     BrowserModule,

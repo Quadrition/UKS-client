@@ -47,6 +47,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ButtonsModule, CarouselModule, WavesModule } from 'angular-bootstrap-md';
 
 @NgModule({
@@ -57,6 +58,7 @@ import { ButtonsModule, CarouselModule, WavesModule } from 'angular-bootstrap-md
     LayoutModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    FlexLayoutModule,
 
     A11yModule,
     ClipboardModule,
