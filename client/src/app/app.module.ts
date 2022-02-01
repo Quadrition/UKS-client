@@ -12,6 +12,7 @@ import { Interceptor } from './interceptors/intercept.service';
 import { NavbarNonAuthComponent } from './components/navbar/navbar-non-auth/navbar-non-auth.component';
 import { NavbarUserComponent } from './components/navbar/navbar-user/navbar-user.component';
 import { SharedModule } from './components/shared/shared.module';
+import { LabelModule } from './components/label/label.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SharedModule } from './components/shared/shared.module';
   ],
   imports: [
     AppRoutingModule,
+    LabelModule,
     MaterialModule,
     AuthModule,
     SharedModule,
