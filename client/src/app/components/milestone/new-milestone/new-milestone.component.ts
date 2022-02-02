@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,6 +26,7 @@ export class NewMilestoneComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private toastr: ToastrService,
+    private location: Location,
     public datepipe: DatePipe,
   ) { }
 
@@ -51,7 +52,8 @@ export class NewMilestoneComponent implements OnInit {
         this.loading = false;
         this.toastr.success('Milestone added!');
         this.form.reset();
-        this.route.navigate(['/milestone']);
+       // this.route.navigate(['/milestone']);
+       this.location.back();
       }
     )
     // this.label.name = this.form.value.name;
@@ -66,7 +68,7 @@ export class NewMilestoneComponent implements OnInit {
     // )
   }
   cancel(): void{
-    this.route.navigate(['/milestone']);
+    this.location.back();
   }
  
   onSelection(event: any){
