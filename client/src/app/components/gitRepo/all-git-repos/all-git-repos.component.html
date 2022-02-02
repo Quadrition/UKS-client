@@ -1,6 +1,12 @@
+<div style="text-align: center">
+<h1  style="margin-top: 1%;"><b>Repositories</b></h1>
+</div>
+<div class="example-button-row">
+    <button mat-stroked-button color="accent" [routerLink]="['/gitRepo/new']" style="float: right;margin-right: 1%;">Create new repository</button>
+    
+</div>
 
-
-    <button mat-raised-button [routerLink]="['/gitRepo/new']">Add new</button>
+    
     <mat-action-list>
         <button mat-list-item *ngFor="let repo of repos" [routerLink]="['/label']"> {{repo.name}} 
             

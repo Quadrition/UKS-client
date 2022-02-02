@@ -1,3 +1,4 @@
+import { NewGitRepoComponent } from './../components/gitRepo/new-git-repo/new-git-repo.component';
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '../components/auth/login-page/login-page.component';
 import { AllGitReposComponent } from '../components/gitRepo/all-git-repos/all-git-repos.component';
@@ -35,6 +36,12 @@ export const routes: Routes = [
      {
       path: 'gitRepo',
       component: AllGitReposComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+   },
+   {
+      path: 'gitRepo/new',
+      component: NewGitRepoComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
    },

@@ -25,5 +25,11 @@ export class GitRepoService {
   
       return this.http.get(`${environment.baseUrl}/${environment.gitRepo}`, queryParams).pipe(map(res => res));
     }
+
+
+    addNew(repo: any){
+		
+      return this.http.post(`${environment.baseUrl}/${environment.gitRepo}`, repo, {headers: this.headers, responseType: 'json'});
+}
 }
 
