@@ -1,6 +1,6 @@
 export class Comment {
   id?: number;
   creationTime?: Date;
-  tast?: Task;
+  task?: Task;
   content?: string;
 }
