@@ -16,12 +16,15 @@ import { LabelModule } from './components/label/label.module';
 import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { GitRepoModule } from './components/gitRepo/git-repo.module';
+import { EditGitRepoComponent } from './components/gitRepo/edit-git-repo/edit-git-repo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarNonAuthComponent,
-    NavbarUserComponent
+    NavbarUserComponent,
+    EditGitRepoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -34,6 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     SharedModule,
     BrowserModule,
     ToastrModule.forRoot(),
+    GitRepoModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],
