@@ -16,6 +16,7 @@ import { LabelModule } from './components/label/label.module';
 import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { StateChangeModule } from './components/stateChange/stateChange.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     AppRoutingModule,
     LabelModule,
+    StateChangeModule,
     MaterialModule,
     MatDialogModule,
     IssueModule,

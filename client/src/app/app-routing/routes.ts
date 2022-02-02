@@ -3,6 +3,10 @@ import { LoginPageComponent } from '../components/auth/login-page/login-page.com
 import { AllLabelsComponent } from '../components/label/all-labels/all-labels.component';
 import { EditLabelComponent } from '../components/label/edit-label/edit-label.component';
 import { NewLabelComponent } from '../components/label/new-label/new-label.component';
+import { EditProjectComponent } from '../components/project/edit-project/edit-project.component';
+import { AllStateChangesComponent } from '../components/stateChange/all-state-changes/all-state-changes.component';
+import { EditStateChangeComponent } from '../components/stateChange/edit-state-change/edit-state-change.component';
+import { NewStateChangeComponent } from '../components/stateChange/new-state-change/new-state-change.component';
 import { LoginGuard } from '../guards/login/login.service';
 import { RoleGuard } from '../guards/role/role.service';
 
@@ -31,6 +35,24 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: {expectedRoles: 'ROLE_USER'}
      },
+     {
+      path: 'stateChange',
+      component: AllStateChangesComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+   },
+   {
+      path: 'stateChange/new',
+      component: NewStateChangeComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+   },
+   {
+      path: 'stateChange/edit/:id',
+      component: EditStateChangeComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+   },
     // {
     //     path: 'register',
     //     component: RegisterPageComponent,
