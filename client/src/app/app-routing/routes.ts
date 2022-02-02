@@ -7,7 +7,6 @@ import { AllLabelsComponent } from '../components/label/all-labels/all-labels.co
 import { EditLabelComponent } from '../components/label/edit-label/edit-label.component';
 import { NewLabelComponent } from '../components/label/new-label/new-label.component';
 
-import { EditProjectComponent } from '../components/project/edit-project/edit-project.component';
 import { AllStateChangesComponent } from '../components/stateChange/all-state-changes/all-state-changes.component';
 import { EditStateChangeComponent } from '../components/stateChange/edit-state-change/edit-state-change.component';
 import { NewStateChangeComponent } from '../components/stateChange/new-state-change/new-state-change.component';
@@ -74,6 +73,9 @@ export const routes: Routes = [
      {
       path: 'stateChange',
       component: AllStateChangesComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },
 
      {
       path: 'project',
@@ -86,11 +88,12 @@ export const routes: Routes = [
 
       path: 'stateChange/new',
       component: NewStateChangeComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
    }, 
     {
       path: 'project/new',
       component: NewProjectComponent,
-
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
    },
@@ -98,6 +101,8 @@ export const routes: Routes = [
 
       path: 'stateChange/edit/:id',
       component: EditStateChangeComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
    },
     {
       path: 'project/edit/:id',
@@ -131,7 +136,8 @@ export const routes: Routes = [
    },
     {
         path: 'register',
-        component: RegisterPageComponent,
+        //component: RegisterPageComponent,
+        component: RegistrationComponent,
         canActivate: [LoginGuard]
     },
     
