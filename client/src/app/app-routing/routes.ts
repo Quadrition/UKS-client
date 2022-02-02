@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '../components/auth/login-page/login-page.component';
+import { RegistrationComponent } from '../components/auth/registration/registration.component';
 import { AllLabelsComponent } from '../components/label/all-labels/all-labels.component';
 import { EditLabelComponent } from '../components/label/edit-label/edit-label.component';
 import { NewLabelComponent } from '../components/label/new-label/new-label.component';
@@ -20,6 +21,11 @@ export const routes: Routes = [
        component: LoginPageComponent,
        canActivate: [LoginGuard] // putanja kojoj moze da pristupi korisnik samo ukoliko NIJE ulogovan
     },
+    {
+      path: 'register',
+      component: RegistrationComponent,
+      canActivate: [LoginGuard] // putanja kojoj moze da pristupi korisnik samo ukoliko NIJE ulogovan
+   },
     {
         path: 'label',
         component: AllLabelsComponent,
