@@ -16,6 +16,7 @@ import { LabelModule } from './components/label/label.module';
 import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MilestoneModule } from './components/milestone/milestone.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     IssueModule,
     ProjectModule,
+    MilestoneModule,
     AuthModule,
     SharedModule,
     BrowserModule,
