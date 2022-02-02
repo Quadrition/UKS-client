@@ -18,6 +18,7 @@ import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GitRepoModule } from './components/gitRepo/git-repo.module';
 import { EditGitRepoComponent } from './components/gitRepo/edit-git-repo/edit-git-repo.component';
+import { MilestoneModule } from './components/milestone/milestone.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EditGitRepoComponent } from './components/gitRepo/edit-git-repo/edit-gi
     MatDialogModule,
     IssueModule,
     ProjectModule,
+    MilestoneModule,
     AuthModule,
     SharedModule,
     BrowserModule,

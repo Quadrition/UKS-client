@@ -1,0 +1,147 @@
+<br><br>
+<div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+        <thead>
+        <tr>         
+         
+            <th>Project details</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th><button mat-raised-button color="warn" (click)="deleteProject()">Delete project</button></th>   
+        </tr>
+        
+    </thead>
+    </table>
+    
+</div>
+
+<br><br>
+<div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+        <thead>
+        <tr>         
+         
+            <th>Project's milestones</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                <button mat-stroked-button (click)="addNewMilestone()">Add new</button>
+            </th>
+        </tr>
+        <tr>         
+         
+            <th>Title</th>
+            <th>Due date</th>
+            <th>Description</th>
+            <th>State</th>
+            <th>Edit milestone</th>
+            <th>Delete milestone</th>
+            <!-- <th  *ngIf="role == 'ROLE_ADMIN'">Delete label</th> -->
+        
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mil of project.milestones">
+            <td>{{mil.title}}</td>
+            <td>{{mil.dueDate | date}}</td>
+            <td>{{mil.description}}</td>
+            <td>{{mil.state}}</td>
+            <td>
+                <button mat-stroked-button (click)="editMilestone(mil.id)">Edit</button>
+            </td>
+            <td>
+                <button mat-stroked-button color="warn" (click)="deleteMilestone(mil.id)">Delete</button>
+            </td>
+            </tr>
+    </tbody>
+
+    </table>
+    
+</div>
+<br><br>
+
+
+<div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+        <thead>
+        <tr>         
+         
+            <th>Labels</th>
+            <th></th>
+            <th></th>
+            <th><button mat-stroked-button (click)="addNewLabel()">Add new</button></th>   
+        </tr>
+        <tr>         
+         
+            <th>Name</th>
+            <th>Creation date</th>
+            <th>Edit label</th>
+            <th>Delete label</th>
+            <!-- <th  *ngIf="role == 'ROLE_ADMIN'">Delete label</th> -->
+        
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lab of project.labesls">
+            <td>{{lab.name}}</td>
+            <!-- <td>{{res.seasonStarts | date}}</td> -->
+            <td>{{lab.labelApplication?.creationTime | date}}</td>
+            <td>
+                <button mat-stroked-button (click)="editLabel(lab.id)">Edit</button>
+            </td>
+            <td>
+                <button mat-stroked-button color="warn" (click)="deleteLabel(lab.id)">Delete</button>
+            </td>
+            </tr>
+    </tbody>
+
+    </table>
+    
+</div>
+
+<br><br>
+<div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+        <thead>
+        <tr>         
+         
+            <th>Developers</th>
+            <th></th>
+            <th></th>
+            <th><button mat-stroked-button (click)="addNewDeveloper()">Add new</button></th>   
+        </tr>
+        <tr>         
+         
+            <th>Name</th>
+            <th>Username</th>
+            <th></th>
+            <th>Remove</th>
+            <!-- <th  *ngIf="role == 'ROLE_ADMIN'">Delete label</th> -->
+        
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of project.developers">
+            <td>{{user.firstName}} {{user.lastName}}</td>
+            <!-- <td>{{res.seasonStarts | date}}</td> -->
+            <td>{{user.username}}</td>
+            <td>
+
+            </td>
+            <td>
+                <button mat-stroked-button color="warn" (click)="removeUser(user.id)">Remove</button>
+            </td>
+            </tr>
+    </tbody>
+
+    </table>
+    
+</div>

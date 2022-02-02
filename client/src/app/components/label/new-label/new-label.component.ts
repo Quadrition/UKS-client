@@ -6,6 +6,8 @@ import { Label } from 'src/app/model/Label';
 import { LabelApplication } from 'src/app/model/LabelApplication';
 import { LabelApplicationService } from 'src/app/services/label-application/label-application.service';
 import { LabelService } from 'src/app/services/label/label.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-new-label',
@@ -20,6 +22,7 @@ export class NewLabelComponent implements OnInit {
   labelApplication!: LabelApplication;
   applications: LabelApplication[] = [];
   selected: any;
+  
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +30,7 @@ export class NewLabelComponent implements OnInit {
     private labelApplicationService: LabelApplicationService,
     private route: Router,
     private toastr: ToastrService,
+    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -52,12 +56,14 @@ export class NewLabelComponent implements OnInit {
         this.loading = false;
         this.toastr.success('Label added!');
         this.form.reset();
-        this.route.navigate(['/label']);
+        //this.route.navigate(['/label']);
+        this.location.back();
       }
     )
   }
   cancel(): void{
-    this.route.navigate(['/label']);
+   // this.route.navigate(['/label']);
+   this.location.back();
   }
   onSelection(event: any): void{
     this.labelApplication = this.selected;
