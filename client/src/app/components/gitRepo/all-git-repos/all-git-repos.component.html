@@ -8,10 +8,10 @@
 
     
     <mat-action-list>
-        <button mat-list-item *ngFor="let repo of repos" [routerLink]="['/label']"> {{repo.name}} 
+        <button mat-list-item *ngFor="let repo of repos" (click)="edit(repo.id)"> {{repo.name}} 
             
         </button>
         
-    </mat-action-list>
+    </mat-action-list> 
     
     

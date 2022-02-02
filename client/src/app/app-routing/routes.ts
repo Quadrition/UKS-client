@@ -15,6 +15,7 @@ import { NewProjectComponent } from '../components/project/new-project/new-proje
 import { ProjectDetailsComponent } from '../components/project/project-details/project-details.component';
 import { LoginGuard } from '../guards/login/login.service';
 import { RoleGuard } from '../guards/role/role.service';
+import { EditGitRepoComponent } from '../components/gitRepo/edit-git-repo/edit-git-repo.component';
 
 
 export const routes: Routes = [
@@ -54,10 +55,16 @@ export const routes: Routes = [
      },
      {
       path: 'gitRepo/new',
-      component: AllGitReposComponent,
+      component: NewGitRepoComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
-     },    
+     },  
+     {
+      path: 'gitRepo/edit/:id',
+      component: EditGitRepoComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },   
 
      {
       path: 'project',

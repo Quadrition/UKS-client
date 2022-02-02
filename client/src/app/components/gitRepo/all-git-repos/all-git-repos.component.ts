@@ -27,6 +27,11 @@ export class AllGitReposComponent implements OnInit {
   
   }
 
+  edit(id: any): void {
+    this.router.navigate(['/gitRepo/edit/'+id])
+
+  }
+
   repos: GitRepo[] = [];
   result: any;
 

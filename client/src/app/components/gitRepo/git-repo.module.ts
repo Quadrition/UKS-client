@@ -5,11 +5,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NewGitRepoComponent } from './new-git-repo/new-git-repo.component';
+import { EditGitRepoComponent } from './edit-git-repo/edit-git-repo.component';
 
 @NgModule({
-    declarations: [AllGitReposComponent, NewGitRepoComponent],
+    declarations: [AllGitReposComponent, NewGitRepoComponent, EditGitRepoComponent],
     imports: [ MaterialModule, RouterModule, MatDialogModule],
-    exports: [AllGitReposComponent, NewGitRepoComponent],
+    exports: [AllGitReposComponent, NewGitRepoComponent,EditGitRepoComponent],
     providers: []
   })
   
