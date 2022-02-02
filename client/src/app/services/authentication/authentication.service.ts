@@ -42,4 +42,10 @@ export class AuthenticationService {
     }
 
 
+    signUp(data: any):  Observable<any> {
+		return this.http.post(`${environment.baseUrl}/${environment.signUp}`, {firstName: data.firstName,
+			lastName: data.lastName, username: data.email, password: data.password}, {headers: this.headers, responseType: 'json'});
+	
+	}
+
 }

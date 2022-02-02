@@ -22,7 +22,9 @@
         <thead>
         <tr>         
          
-            <th>Projects</th>
+            <th>Milestones</th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th><button mat-raised-button (click)="addNew()">Add new</button></th>   
@@ -30,25 +32,27 @@
         <tr>         
          
             <th>Title</th>
-            <th>GitRepo</th>
-            <th>Edit project</th>
-            <th>Delete project</th>
+            <th>Due date</th>
+            <th>Description</th>
+            <th>State</th>
+            <th>Edit milestone</th>
+            <th>Delete milestone</th>
             <!-- <th  *ngIf="role == 'ROLE_ADMIN'">Delete label</th> -->
         
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let proj of projects">
-            <td>
-                <button mat-button (click)="details(proj.id)">{{proj.title}}</button>
-            </td>
+        <tr *ngFor="let mil of milestones">
+            <td>{{mil.title}}</td>
             <!-- <td>{{res.seasonStarts | date}}</td> -->
-            <td>{{proj.gitRepo?.name}}</td>
+            <td>{{mil.dueDate | date}}</td>
+            <td>{{mil.description}}</td>
+            <td>{{mil.state}}</td>
             <td>
-                <button mat-stroked-button (click)="edit(proj.id)">Edit</button>
+                <button mat-stroked-button (click)="edit(mil.id)">Edit</button>
             </td>
             <td>
-                <button mat-stroked-button color="warn" (click)="delete(proj.id)">Delete</button>
+                <button mat-stroked-button color="warn" (click)="delete(mil.id)">Delete</button>
             </td>
             </tr>
     </tbody>

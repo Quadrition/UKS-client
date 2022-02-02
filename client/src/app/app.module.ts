@@ -17,6 +17,7 @@ import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StateChangeModule } from './components/stateChange/stateChange.module';
+import { MilestoneModule } from './components/milestone/milestone.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { StateChangeModule } from './components/stateChange/stateChange.module';
     MatDialogModule,
     IssueModule,
     ProjectModule,
+    MilestoneModule,
     AuthModule,
     SharedModule,
     BrowserModule,

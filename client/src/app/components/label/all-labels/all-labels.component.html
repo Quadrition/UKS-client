@@ -41,7 +41,8 @@
         <tr *ngFor="let lab of labels">
             <td>{{lab.name}}</td>
             <!-- <td>{{res.seasonStarts | date}}</td> -->
-            <td>{{lab.labelApplication?.creationTime|date}}</td>
+            <td>{{lab.labelApplication?.creationTime | date}}</td>
+
             <td>
                 <button mat-stroked-button (click)="edit(lab.id)">Edit</button>
             </td>
