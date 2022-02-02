@@ -4,14 +4,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Comment } from 'src/app/model/Comment';
+import { Task } from 'src/app/model/Task';
 import { CommentService } from 'src/app/services/comment/comment.service';
 
 @Component({
-  selector: 'app-edit-comment',
-  templateUrl: './edit-comment.component.html',
-  styleUrls: ['./edit-comment.component.scss']
+  selector: 'app-new-comment',
+  templateUrl: './new-comment.component.html',
+  styleUrls: ['./new-comment.component.scss']
 })
-export class EditCommentComponent implements OnInit {
+export class NewCommentComponent implements OnInit {
 
   form!: FormGroup;
   comment: Comment = {};
@@ -21,7 +22,6 @@ export class EditCommentComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private commentService: CommentService,
-    private router: ActivatedRoute,
     private toastr: ToastrService,
     private location: Location,
     public datepipe: DatePipe,
@@ -29,18 +29,6 @@ export class EditCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.commentId = this.router.snapshot.params.id;
-
-    this.commentService.getOne(this.commentId).subscribe(
-      res => {
-        this.comment = res.body as Comment;
-        this.form = this.fb.group({
-          creationTime: [this.datepipe.transform(this.comment.creationTime, 'yyyy-MM-dd')],
-          content: [this.comment.content],
-          // task: [this.comment.task]
-        });
-      }
-    );
   }
 
   createForm(): void {
@@ -55,10 +43,10 @@ export class EditCommentComponent implements OnInit {
     this.comment.creationTime = this.form.value.creationTime;
     this.comment.content = this.form.value.content;
     //this.comment.task = this.form.value.task;
-    this.commentService.edit(this.comment).subscribe(
+    this.commentService.addNew(this.comment).subscribe(
       res => {
         this.loading = false;
-        this.toastr.success('Comment edited!');
+        this.toastr.success('Comment added!');
         this.form.reset();
         this.location.back();
       }
