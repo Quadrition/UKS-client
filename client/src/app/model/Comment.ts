@@ -1,3 +1,6 @@
-export class Comment extends Event{
-    content?: string;
+export class Comment {
+  id?: number;
+  creationTime?: Date;
+  tast?: Task;
+  content?: string;
 }

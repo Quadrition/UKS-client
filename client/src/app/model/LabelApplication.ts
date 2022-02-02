@@ -1,5 +1,5 @@
-export class LabelApplication extends Event{
-    id?: number;
-    creationTime?: Date;
-    tast?: Task;
+export class LabelApplication {
+  id?: number;
+  creationTime?: Date;
+  tast?: Task;
 }

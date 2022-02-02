@@ -14,7 +14,9 @@ export const environment = {
   labelApplication: 'api/labelApplication',
   milestone: 'api/milestone',
   project: 'api/project',
-  user: 'api/user'
+  user: 'api/user',
+  event: 'api/event',
+  comment: 'api/comment'
 };
 
 /*
