@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '../components/auth/login-page/login-page.component';
 import { AllLabelsComponent } from '../components/label/all-labels/all-labels.component';
+import { EditLabelComponent } from '../components/label/edit-label/edit-label.component';
+import { NewLabelComponent } from '../components/label/new-label/new-label.component';
 import { LoginGuard } from '../guards/login/login.service';
 import { RoleGuard } from '../guards/role/role.service';
 
@@ -12,8 +14,20 @@ export const routes: Routes = [
        canActivate: [LoginGuard] // putanja kojoj moze da pristupi korisnik samo ukoliko NIJE ulogovan
     },
     {
-        path: 'all-labels',
+        path: 'label',
         component: AllLabelsComponent,
+        canActivate: [RoleGuard],
+        data: {expectedRoles: 'ROLE_USER'}
+     },
+     {
+        path: 'label/new',
+        component: NewLabelComponent,
+        canActivate: [RoleGuard],
+        data: {expectedRoles: 'ROLE_USER'}
+     },
+     {
+        path: 'label/edit/:id',
+        component: EditLabelComponent,
         canActivate: [RoleGuard],
         data: {expectedRoles: 'ROLE_USER'}
      },

@@ -1,1 +1,56 @@
-<p>all-labels works!</p>
+<!-- <form class="reactiveForm" [formGroup]="searchForm" (ngSubmit)="search()" style="display: block; width: 200px; height: 80px; margin-left:auto; margin-right:auto;">
+    <div class="example-container" >
+        <mat-form-field appearance="fill">
+            <mat-label>Search by name</mat-label>
+            <input id="searchContent" matInput formControlName="name">
+        </mat-form-field>
+        <div style="display: inline-block;">
+            <mat-dialog-actions align="center">
+                <button id="submitSearch" type="submit" mat-raised-button color="success">Search</button>
+                <button id="refresh" (click)="refresh()" mat-raised-button style="margin-left: 15px;">Refresh</button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</form> -->
+
+
+<br><br>
+
+<div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+        <thead>
+        <tr>         
+         
+            <th>Labels</th>
+            <th></th>
+            <th></th>
+            <th><button mat-raised-button [routerLink]="['/label/new']">Add new</button></th>   
+        </tr>
+        <tr>         
+         
+            <th>Name</th>
+            <th>Creation date</th>
+            <th>Edit label</th>
+            <th>Delete label</th>
+            <!-- <th  *ngIf="role == 'ROLE_ADMIN'">Delete label</th> -->
+        
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lab of labels">
+            <td>{{lab.name}}</td>
+            <!-- <td>{{res.seasonStarts | date}}</td> -->
+            <td>{{lab.labelApplication?.creationTime}}</td>
+            <td>
+                <button mat-stroked-button (click)="edit(lab.id)">Edit</button>
+            </td>
+            <td>
+                <button mat-stroked-button color="warn" (click)="delete(lab.id)">Delete</button>
+            </td>
+            </tr>
+    </tbody>
+
+    </table>
+    
+</div>

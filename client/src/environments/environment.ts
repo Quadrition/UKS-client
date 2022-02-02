@@ -11,6 +11,7 @@ export const environment = {
   changePassword: 'auth/change-password',
 
   label: 'api/label',
+  labelApplication: 'api/labelApplication',
   milestone: 'api/milestone',
   project: 'api/project',
   user: 'api/user'

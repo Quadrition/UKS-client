@@ -15,6 +15,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { LabelModule } from './components/label/label.module';
 import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProjectModule } from './components/project/project.module';
     AppRoutingModule,
     LabelModule,
     MaterialModule,
+    MatDialogModule,
     IssueModule,
     ProjectModule,
     AuthModule,
@@ -35,6 +37,6 @@ import { ProjectModule } from './components/project/project.module';
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
