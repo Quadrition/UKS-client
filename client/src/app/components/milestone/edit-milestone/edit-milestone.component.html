@@ -1,0 +1,91 @@
+
+<br><br>
+<body>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <form class="reactiveForm" [formGroup]="form"  class="form-inline my-2 my-lg-0" *ngIf="!loading">
+        <div class="example-container" style="margin-left: 50px;">
+            <table class="styled-table">
+                <thead>
+                <tr>         
+                    <th>Edit milestone</th>
+                    <th style="text-align: right; width: fit-content;">
+                        <mat-dialog-actions>
+                            <button mat-raised-button (click)="cancel()" >
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">clear</mat-icon>
+                            </button>
+                            <button  type="submit" mat-raised-button color="success"  id="saveNewResort"(click)="saveChanges()" style="margin-left: 15px;">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">checked</mat-icon>
+                            </button>
+                        </mat-dialog-actions>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName="title"  required>
+                            <mat-error *ngIf="form.controls.title.touched && form.controls.title.invalid">
+                                <span *ngIf="form.controls.title.errors?.required">This field is mandatory.</span>
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td></td>
+                 
+                    <!-- <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Label App</mat-label>
+                            <mat-select id="labelApp" [(value)]="selected" (valueChange)="onSelection($event)" >
+                                <mat-option  *ngFor="let app of applications" id="app{{app.id}}" [value]="app">
+                                    {{app.id}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td> -->
+                   
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description</mat-label>
+                            <input matInput formControlName="description"  required>
+                            <mat-error *ngIf="form.controls.description.touched && form.controls.description.invalid">
+                                <span *ngIf="form.controls.description.errors?.required">This field is mandatory.</span>
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>State</mat-label>
+                            <mat-select id="stateSelect" [(value)]="stateSelected" (valueChange)="onSelection($event)">
+                                <mat-option value="OPEN">OPEN</mat-option>
+                                <mat-option value="CLOSED">CLOSED</mat-option>
+                                <mat-option value="MERGED">MERGED</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Due date</mat-label>
+                            <input matInput [matDatepicker]="picker"  formControlName="dueDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                    <td></td>
+                </tr>    
+            </tbody>
+            </table>
+            <br><br>
+            
+        <br><br>
+        </div>
+    </form>
+</body>
