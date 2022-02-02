@@ -17,6 +17,7 @@ import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GitRepoModule } from './components/gitRepo/git-repo.module';
+import { StateChangeModule } from './components/stateChange/stateChange.module';
 import { MilestoneModule } from './components/milestone/milestone.module';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MilestoneModule } from './components/milestone/milestone.module';
   imports: [
     AppRoutingModule,
     LabelModule,
+    StateChangeModule,
     MaterialModule,
     MatDialogModule,
     IssueModule,
