@@ -16,6 +16,7 @@ export const environment = {
   project: 'api/project',
   user: 'api/user',
   stateChange: 'api/stateChange',
+  gitRepo: 'api/gitRepo',
   branch: 'api/branch',
 };
 
