@@ -4,6 +4,11 @@ import { RegistrationComponent } from '../components/auth/registration/registrat
 import { AllLabelsComponent } from '../components/label/all-labels/all-labels.component';
 import { EditLabelComponent } from '../components/label/edit-label/edit-label.component';
 import { NewLabelComponent } from '../components/label/new-label/new-label.component';
+
+import { EditProjectComponent } from '../components/project/edit-project/edit-project.component';
+import { AllStateChangesComponent } from '../components/stateChange/all-state-changes/all-state-changes.component';
+import { EditStateChangeComponent } from '../components/stateChange/edit-state-change/edit-state-change.component';
+import { NewStateChangeComponent } from '../components/stateChange/new-state-change/new-state-change.component';
 import { AllMilestonesComponent } from '../components/milestone/all-milestones/all-milestones.component';
 import { EditMilestoneComponent } from '../components/milestone/edit-milestone/edit-milestone.component';
 import { NewMilestoneComponent } from '../components/milestone/new-milestone/new-milestone.component';
@@ -46,18 +51,33 @@ export const routes: Routes = [
      },
 
      {
+      path: 'stateChange',
+      component: AllStateChangesComponent,
+
+     {
       path: 'project',
       component: AllProjectsComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
    },
    {
+
+      path: 'stateChange/new',
+      component: NewStateChangeComponent,
+   }, 
+    {
       path: 'project/new',
       component: NewProjectComponent,
+
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
    },
    {
+
+      path: 'stateChange/edit/:id',
+      component: EditStateChangeComponent,
+   },
+    {
       path: 'project/edit/:id',
       component: EditProjectComponent,
       canActivate: [RoleGuard],
@@ -87,11 +107,11 @@ export const routes: Routes = [
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
    },
-    // {
-    //     path: 'register',
-    //     component: RegisterPageComponent,
-    //     canActivate: [LoginGuard]
-    // },
+    {
+        path: 'register',
+        component: RegisterPageComponent,
+        canActivate: [LoginGuard]
+    },
     
     // {
     // putanja kojoj moze da pristupi samo registrivani korisnik sa konkretnom ulogom
