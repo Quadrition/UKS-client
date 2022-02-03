@@ -3,45 +3,45 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Comment } from 'src/app/model/Comment';
-import { CommentService } from 'src/app/services/comment/comment.service';
+import { Event } from 'src/app/model/Event';
+import { EventService } from 'src/app/services/event/event.service';
 import { ConfirmationComponent, ConfirmDialogModel } from '../../shared/confirmation/confirmation.component';
 
 @Component({
-  selector: 'app-all-comments',
-  templateUrl: './all-comments.component.html',
-  styleUrls: ['./all-comments.component.scss']
+  selector: 'app-all-events',
+  templateUrl: './all-events.component.html',
+  styleUrls: ['./all-events.component.scss']
 })
-export class AllCommentsComponent implements OnInit {
+export class AllEventsComponent implements OnInit {
 
-  comments: Comment[] = [];
+  events: Event[] = [];
   result: any;
   searchForm!: FormGroup;
 
   constructor(
-    private commentService: CommentService,
+    private eventService: EventService,
     public dialog: MatDialog,
     private router: Router,
     private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
-    this.commentService.getAll().subscribe(
+    this.eventService.getAll().subscribe(
       res => {
-        this.comments = res.body as Comment[];
+        this.events = res.body as Event[];
       });
   }
 
   edit(id: any): void {
-    this.router.navigate(['/comment/edit/' + id])
+    this.router.navigate(['/event/edit/' + id])
   }
 
   addNew(): void {
-    this.router.navigate(['/comment/new'])
+    this.router.navigate(['/event/new'])
   }
 
   delete(id: any): void {
-    const message = `Are you sure you want to delete comment?`
+    const message = `Are you sure you want to delete event?`
     const dialogData = new ConfirmDialogModel('Confirm Action', message);
     const dialogRef = this.dialog.open(ConfirmationComponent, {
       maxWidth: '400px',
@@ -51,13 +51,13 @@ export class AllCommentsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
       if (this.result === true) {
-        this.commentService.delete(id).subscribe(
+        this.eventService.delete(id).subscribe(
           result => {
             console.log("DELETED");
-            this.toastr.success('Comment deleted');
+            this.toastr.success('Event deleted');
             window.location.reload();
           }, error => {
-            this.toastr.error('Cannot delete comment');
+            this.toastr.error('Cannot delete event');
             console.log("Error")
           });
       }

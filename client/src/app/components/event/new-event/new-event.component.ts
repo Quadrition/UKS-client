@@ -2,24 +2,24 @@ import { DatePipe, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Comment } from 'src/app/model/Comment';
-import { CommentService } from 'src/app/services/comment/comment.service';
+import { Event } from 'src/app/model/Event';
+import { EventService } from 'src/app/services/event/event.service';
 
 @Component({
-  selector: 'app-new-comment',
-  templateUrl: './new-comment.component.html',
-  styleUrls: ['./new-comment.component.scss']
+  selector: 'app-new-event',
+  templateUrl: './new-event.component.html',
+  styleUrls: ['./new-event.component.scss']
 })
-export class NewCommentComponent implements OnInit {
+export class NewEventComponent implements OnInit {
 
   form!: FormGroup;
-  comment: Comment = {};
+  event: Event = {};
   loading = false;
-  commentId: any;
+  eventId: any;
 
   constructor(
     private fb: FormBuilder,
-    private commentService: CommentService,
+    private eventService: EventService,
     private toastr: ToastrService,
     private location: Location,
     public datepipe: DatePipe,
@@ -32,19 +32,17 @@ export class NewCommentComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       creationTime: ['', Validators.required],
-      content: ['', Validators.required],
       // task: ['', Validators.required],
     });
   }
 
   saveChanges(): void {
-    this.comment.creationTime = this.form.value.creationTime;
-    this.comment.content = this.form.value.content;
-    //this.comment.task = this.form.value.task;
-    this.commentService.addNew(this.comment).subscribe(
+    this.event.creationTime = this.form.value.creationTime;
+    //this.event.task = this.form.value.task;
+    this.eventService.addNew(this.event).subscribe(
       res => {
         this.loading = false;
-        this.toastr.success('Comment added!');
+        this.toastr.success('Event added!');
         this.form.reset();
         this.location.back();
       }
