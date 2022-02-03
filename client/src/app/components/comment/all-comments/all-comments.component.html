@@ -1,35 +1,93 @@
 <br><br>
-<div style="margin-left: 20px;">
-  <br>
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Comments</th>
-        <th></th>
-        <th></th>
-        <th><button mat-raised-button (click)="cancel()">Go back</button></th>
-        <th><button mat-raised-button (click)="addNew()">Add new</button></th>
-      </tr>
-      <tr>
-        <th>Creation time</th>
-        <th>Task</th>
-        <th>Content</th>
-        <th>Edit comment</th>
-        <th>Delete comment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let comment of comments">
-        <td>{{comment.creationTime | date}}</td>
-        <td>Task {{comment.task?.id}} by {{comment.task?.creator?.username}} </td>
-        <td>{{comment.content}}</td>
-        <td>
-          <button mat-stroked-button (click)="edit(comment.id)">Edit</button>
-        </td>
-        <td>
-          <button mat-stroked-button color="warn" (click)="delete(comment.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<br><br>
+<form class="reactiveForm" [formGroup]="searchForm" (ngSubmit)="search()"
+  style="display: block; width: 200px; height: 80px; margin-left:auto; margin-right:auto;">
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Search by id</mat-label>
+      <input id="searchContent" matInput formControlName="id">
+    </mat-form-field>
+    <div style="display: inline-block;">
+      <mat-dialog-actions align="center">
+        <button id="submitSearch" type="submit" mat-raised-button color="success">Search</button>
+        <button id="refresh" (click)="refresh()" mat-raised-button style="margin-left: 15px;">Refresh</button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+</form>
+
+<br><br>
+<br><br>
+<div>
+  <div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table" *ngIf="foundComment != undefined">
+      <thead>
+        <tr>
+          <th>Comments</th>
+          <th></th>
+          <th></th>
+          <th><button mat-raised-button (click)="cancel()">Go back</button></th>
+          <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+        </tr>
+        <tr>
+          <th>Creation time</th>
+          <th>Task</th>
+          <th>Content</th>
+          <th>Edit comment</th>
+          <th>Delete comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{foundComment.creationTime | date}}</td>
+          <td>Task {{foundComment.task?.id}} by {{foundComment.task?.creator?.username}} </td>
+          <td>{{foundComment.content}}</td>
+          <td>
+            <button mat-stroked-button (click)="edit(foundComment.id)">Edit</button>
+          </td>
+          <td>
+            <button mat-stroked-button color="warn" (click)="delete(foundComment.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br><br>
+  <br><br>
+
+  <div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Comments</th>
+          <th></th>
+          <th></th>
+          <th><button mat-raised-button (click)="cancel()">Go back</button></th>
+          <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+        </tr>
+        <tr>
+          <th>Creation time</th>
+          <th>Task</th>
+          <th>Content</th>
+          <th>Edit comment</th>
+          <th>Delete comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comment of comments">
+          <td>{{comment.creationTime | date}}</td>
+          <td>Task {{comment.task?.id}} by {{comment.task?.creator?.username}} </td>
+          <td>{{comment.content}}</td>
+          <td>
+            <button mat-stroked-button (click)="edit(comment.id)">Edit</button>
+          </td>
+          <td>
+            <button mat-stroked-button color="warn" (click)="delete(comment.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
