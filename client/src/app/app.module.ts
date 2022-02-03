@@ -23,6 +23,7 @@ import { TaskModule } from './components/task/task.module';
 import { CommentModule } from './components/comment/comment.module';
 import { EventModule } from './components/event/event.module';
 import { LabelApplicationModule } from './components/labelApplication/labelApplication.module';
+import { UserModule } from './components/user/user.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LabelApplicationModule } from './components/labelApplication/labelAppli
     SharedModule,
     BrowserModule,
     ToastrModule.forRoot(),
-    GitRepoModule
+    GitRepoModule,
+    UserModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],

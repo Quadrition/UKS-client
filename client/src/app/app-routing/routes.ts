@@ -32,6 +32,7 @@ import { EditGitRepoComponent } from '../components/gitRepo/edit-git-repo/edit-g
 import { NewTaskComponent } from '../components/task/new-task/new-task.component';
 import { AllTasksComponent } from '../components/task/all-tasks/all-tasks.component';
 import { EditTaskComponent } from '../components/task/edit-task/edit-task.component';
+import { UserChooserComponent } from '../components/user/user-chooser/user-chooser.component';
 
 
 export const routes: Routes = [
@@ -221,6 +222,13 @@ export const routes: Routes = [
    {
       path: 'task/edit/:id',
       component: EditTaskComponent,
+      canActivate: [RoleGuard],
+      data: { expectedRoles: 'ROLE_USER' }
+   },
+
+   {
+      path: 'add-developers/:projectId',
+      component: UserChooserComponent,
       canActivate: [RoleGuard],
       data: { expectedRoles: 'ROLE_USER' }
    },

@@ -24,7 +24,10 @@ export class ProjectService {
 
 		return this.http.get(`${environment.baseUrl}/${environment.project}`, queryParams).pipe(map(res => res));
 	}
+    removeDeveloper(user: any){
+        return this.http.put(`${environment.baseUrl}/${environment.project}/remove-developer`, user, {headers: this.headers, responseType: 'json'});
 
+	}
     getMy(): Observable<any> {
 		let queryParams = {};
         queryParams = {
