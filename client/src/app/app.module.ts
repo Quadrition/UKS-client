@@ -20,9 +20,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { GitRepoModule } from './components/gitRepo/git-repo.module';
 import { StateChangeModule } from './components/stateChange/stateChange.module';
 import { MilestoneModule } from './components/milestone/milestone.module';
+import { TaskModule } from './components/task/task.module';
 import { CommentModule } from './components/comment/comment.module';
 import { EventModule } from './components/event/event.module';
 import { LabelApplicationModule } from './components/labelApplication/labelApplication.module';
+import { UserModule } from './components/user/user.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { LabelApplicationModule } from './components/labelApplication/labelAppli
   imports: [
     AppRoutingModule,
     LabelModule,
+    TaskModule,
     StateChangeModule,
     MaterialModule,
     MatDialogModule,
@@ -49,7 +52,8 @@ import { LabelApplicationModule } from './components/labelApplication/labelAppli
     BrowserModule,
     ToastrModule.forRoot(),
     GitRepoModule,
-    PullReqModule
+    PullReqModule,
+    UserModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],

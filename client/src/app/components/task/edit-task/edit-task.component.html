@@ -7,13 +7,13 @@
             <table class="styled-table">
                 <thead>
                 <tr>         
-                    <th>Add new project</th>
-                    <th style="text-align: right;">
+                    <th>Edit task</th>
+                    <th style="text-align: right; width: fit-content;">
                         <mat-dialog-actions>
                             <button mat-raised-button (click)="cancel()" >
                                 <mat-icon aria-hidden="false" aria-label="Example home icon">clear</mat-icon>
                             </button>
-                            <button  type="submit" mat-raised-button color="success" (click)="saveChanges()" style="margin-left: 15px;">
+                            <button  type="submit" mat-raised-button color="success"  id="saveNewResort"(click)="saveChanges()" style="margin-left: 15px;">
                                 <mat-icon aria-hidden="false" aria-label="Example home icon">checked</mat-icon>
                             </button>
                         </mat-dialog-actions>
@@ -21,19 +21,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                  <tr>
+                    <td> 
+                      <mat-form-field appearance="fill">
+                        <mat-label>Milestone</mat-label>
+                        <mat-select id="milestoneId" [(value)]="selected" (valueChange)="onSelection($event)" >
+                            <mat-option  *ngFor="let milestone of milestones" id="milestone{{milestone.id}}" [value]="selected">
+                                {{milestone.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    </td>
                     <td>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Title</mat-label>
-                            <input matInput formControlName="title"  required>
-                            <mat-error *ngIf="form.controls.title.touched && form.controls.title.invalid">
-                                <span *ngIf="form.controls.title.errors?.required">This field is mandatory.</span>
-                            </mat-error>
-                        </mat-form-field>
+
                     </td>
                 </tr>     
             </tbody>
             </table>
+            <br><br>
+            
+        <br><br>
         </div>
     </form>
 </body>

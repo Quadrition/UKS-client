@@ -23,6 +23,7 @@ export class ProjectDetailsComponent implements OnInit {
   result: any;
   projectId: any;
   loading = false;
+  projectName: any;
 
   constructor(
     private fb: FormBuilder,
@@ -42,9 +43,26 @@ export class ProjectDetailsComponent implements OnInit {
     this.projectService.getOne(this.projectId).subscribe(
       res => {
         this.project = res.body as Project;
+        this.projectName = this.project.title;
         console.log(this.project);
       }
     )
+  }
+
+  cancel(){
+    this.projectName = this.project.title;
+  }
+
+  saveChanges(){
+      this.project.title = this.projectName;
+      this.projectService.edit(this.project).subscribe(
+        res => {
+          this.toastr.success("Project title changed!");
+        },
+        error => {
+          this.toastr.error("Cannot change project title");
+        }
+      )
   }
 
   deleteProject(){
@@ -80,9 +98,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   }
   addNewMilestone(): void {
-    this.route.navigate(['/milestone/new'])
-    // sacuvaj milestone u tom projektu
-
+    this.route.navigate(['/milestone/new/'+ this.projectId])
   }
 
   deleteMilestone(id: any): void{
@@ -141,15 +157,36 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   addNewLabel() {
-    this.route.navigate(['/label/new']);
+    this.route.navigate(['/label/new/' + this.projectId]);
   }
 
   addNewDeveloper(){
-
+    this.route.navigate(['/add-developers/'+ this.projectId])
   }
 
-  removeUser(id: any){
+  removeUser(user: any){
+    const message = `Are you sure you want to remove developer?`
+    const dialogData = new ConfirmDialogModel('Confirm Action', message);
+    const dialogRef = this.dialog.open(ConfirmationComponent, {
+        maxWidth: '400px',
+        data: dialogData
+    });
 
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+        if (this.result === true){
+          this.projectService.removeDeveloper(user).subscribe(
+            res => {
+              console.log("REMOVED");
+              this.toastr.success('Developer removed');
+              window.location.reload();
+            }, error => {
+              this.toastr.error("Cannot remove developer");
+            }
+          )
+         
+          }
+      })
   }
 
 }

@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Comment } from 'src/app/model/Comment';
+import { Task } from 'src/app/model/Task';
 import { CommentService } from 'src/app/services/comment/comment.service';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-new-comment',
@@ -14,6 +16,9 @@ export class NewCommentComponent implements OnInit {
 
   form!: FormGroup;
   comment: Comment = {};
+  task!: Task;
+  tasks: Task[] = [];
+  selectedTask: any;
   loading = false;
   commentId: any;
   result: any;
@@ -21,12 +26,17 @@ export class NewCommentComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private commentService: CommentService,
+    private taskService: TaskService,
     private toastr: ToastrService,
     private location: Location,
     public datepipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
+    this.taskService.getAll().subscribe(
+      res => {
+        this.tasks = res.body as Task[];
+      });
     this.createForm();
   }
 
@@ -34,14 +44,14 @@ export class NewCommentComponent implements OnInit {
     this.form = this.fb.group({
       creationTime: ['', Validators.required],
       content: ['', Validators.required],
-      // task: ['', Validators.required],
+      task: ['', Validators.required],
     });
   }
 
   saveChanges(): void {
     this.comment.creationTime = this.form.value.creationTime;
     this.comment.content = this.form.value.content;
-    //this.comment.task = this.form.value.task;
+    this.comment.task = this.task;
     this.commentService.addNew(this.comment).subscribe(
       res => {
         this.loading = false;
@@ -50,6 +60,10 @@ export class NewCommentComponent implements OnInit {
         this.location.back();
       }
     )
+  }
+
+  onSelection(event: any): void {
+    this.task = this.selectedTask;
   }
 
   cancel(): void {

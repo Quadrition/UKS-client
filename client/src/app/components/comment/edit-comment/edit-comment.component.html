@@ -45,20 +45,18 @@
             </td>
             <td></td>
           </tr>
-          <!--
           <tr>
             <td>
               <mat-form-field appearance="fill">
                 <mat-label>Task</mat-label>
-                <input matInput formControlName="task" required>
-                <mat-error *ngIf="form.controls.task.touched && form.controls.task.invalid">
-                  <span *ngIf="form.controls.task.errors?.required">This field is mandatory.</span>
-                </mat-error>
+                <mat-select id="task" [(value)]="selectedTask" (valueChange)="onSelection($event)">
+                  <mat-option *ngFor="let task of tasks" id="task{{task.id}}" [value]="task">
+                    {{task.id}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             </td>
-            <td></td>
           </tr>
-          -->
         </tbody>
       </table>
       <br><br>

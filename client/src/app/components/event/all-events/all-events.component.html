@@ -4,30 +4,39 @@
   <table class="styled-table">
     <thead>
       <tr>
-        <th>Events</th>
         <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+        <h1>All Events</h1>
       </tr>
       <tr>
         <th>Creation time</th>
         <th>Task</th>
-        <th>Edit event</th>
-        <th>Delete event</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let event of events">
         <td>{{event.creationTime | date}}</td>
         <td>Task {{event.task?.id}} by {{event.task?.creator?.username}} </td>
-        <td>
-          <button mat-stroked-button (click)="edit(event.id)">Edit</button>
-        </td>
-        <td>
-          <button mat-stroked-button color="warn" (click)="delete(event.id)">Delete</button>
-        </td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+
+  <br><br>
+
+  <table class="styled-table">
+
+    <tbody>
+      <tr>
+        <th>Go to Comments</th>
+        <th><button mat-raised-button (click)="goToComments()">Comments</button></th>
+      </tr>
+      <tr>
+        <th>Go to Label Applications</th>
+        <th><button mat-raised-button (click)="goToLabelApplications()">Label Applications</button></th>
+      </tr>
+      <tr>
+        <th>Go to State Changes</th>
+        <th><button mat-raised-button (click)="goToStateChanges()">State Changes</button></th>
       </tr>
     </tbody>
   </table>

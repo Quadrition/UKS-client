@@ -6,6 +6,8 @@ import { Label } from 'src/app/model/Label';
 import { LabelApplication } from 'src/app/model/LabelApplication';
 import { LabelApplicationService } from 'src/app/services/labelApplication/labelApplication.service';
 import { LabelService } from 'src/app/services/label/label.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-edit-label',
@@ -25,6 +27,7 @@ export class EditLabelComponent implements OnInit {
     private labelService: LabelService,
     private route: Router,
     private router: ActivatedRoute,
+    private location: Location,
     private toastr: ToastrService,
   ) { }
 
@@ -56,12 +59,12 @@ export class EditLabelComponent implements OnInit {
         this.loading = false;
         this.toastr.success('Label edited!');
         this.form.reset();
-        this.route.navigate(['/label']);
+        this.location.back();
       }
     )
   }
   cancel(): void{
-    this.route.navigate(['/label']);
+    this.location.back();
   }
 
 }

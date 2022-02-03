@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Comment } from 'src/app/model/Comment';
+import { Task } from 'src/app/model/Task';
 import { CommentService } from 'src/app/services/comment/comment.service';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-edit-comment',
@@ -15,12 +17,16 @@ export class EditCommentComponent implements OnInit {
 
   form!: FormGroup;
   comment: Comment = {};
+  task!: Task;
+  tasks: Task[] = [];
+  selectedTask: any;
   loading = false;
   commentId: any;
 
   constructor(
     private fb: FormBuilder,
     private commentService: CommentService,
+    private taskService: TaskService,
     private router: ActivatedRoute,
     private toastr: ToastrService,
     private location: Location,
@@ -28,6 +34,10 @@ export class EditCommentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.taskService.getAll().subscribe(
+      res => {
+        this.tasks = res.body as Task[];
+      });
     this.createForm();
     this.commentId = this.router.snapshot.params.id;
 
@@ -37,8 +47,9 @@ export class EditCommentComponent implements OnInit {
         this.form = this.fb.group({
           creationTime: [this.datepipe.transform(this.comment.creationTime, 'yyyy-MM-dd')],
           content: [this.comment.content],
-          // task: [this.comment.task]
+          task: [this.comment.task]
         });
+        this.selectedTask = this.comment.task;
       }
     );
   }
@@ -47,14 +58,18 @@ export class EditCommentComponent implements OnInit {
     this.form = this.fb.group({
       creationTime: ['', Validators.required],
       content: ['', Validators.required],
-      // task: ['', Validators.required],
+      task: ['', Validators.required],
     });
   }
 
   saveChanges(): void {
     this.comment.creationTime = this.form.value.creationTime;
     this.comment.content = this.form.value.content;
-    //this.comment.task = this.form.value.task;
+    if (this.task === undefined) {
+      this.task = this.form.value.task;
+    }
+    this.comment.task = this.task;
+
     this.commentService.edit(this.comment).subscribe(
       res => {
         this.loading = false;
@@ -63,6 +78,10 @@ export class EditCommentComponent implements OnInit {
         this.location.back();
       }
     )
+  }
+
+  onSelection(event: any): void {
+    this.task = this.selectedTask;
   }
 
   cancel(): void {
