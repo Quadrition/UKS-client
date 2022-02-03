@@ -1,5 +1,8 @@
-export class LabelApplication extends Event{
-    id?: number;
-    creationTime?: Date;
-    tast?: Task;
+
+import { Task } from "./Task";
+
+export class LabelApplication {
+  id?: number;
+  creationTime?: Date;
+  task?: Task;
 }

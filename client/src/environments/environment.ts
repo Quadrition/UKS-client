@@ -15,6 +15,8 @@ export const environment = {
   milestone: 'api/milestone',
   project: 'api/project',
   user: 'api/user',
+  event: 'api/event',
+  comment: 'api/comment',
   gitRepo: 'api/gitRepo',
   stateChange: 'api/stateChange'
 };

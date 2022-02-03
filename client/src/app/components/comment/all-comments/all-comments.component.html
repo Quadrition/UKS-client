@@ -1,0 +1,36 @@
+<br><br>
+<div style="margin-left: 20px;">
+  <br>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Comments</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+      </tr>
+      <tr>
+        <th>Creation time</th>
+        <th>Task</th>
+        <th>Content</th>
+        <th>Edit comment</th>
+        <th>Delete comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let comment of comments">
+        <td>{{comment.creationTime | date}}</td>
+        <td>Task {{comment.task?.id}} by {{comment.task?.creator?.username}} </td>
+        <td>{{comment.content}}</td>
+        <td>
+          <button mat-stroked-button (click)="edit(comment.id)">Edit</button>
+        </td>
+        <td>
+          <button mat-stroked-button color="warn" (click)="delete(comment.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
