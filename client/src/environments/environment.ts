@@ -20,6 +20,7 @@ export const environment = {
   gitRepo: 'api/gitRepo',
   task: 'api/task',
   stateChange: 'api/stateChange',
+  pullReq: 'api/pullReq'
 };
 
 /*

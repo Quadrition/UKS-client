@@ -1,0 +1,25 @@
+<div style="text-align: center">
+    <h1  style="margin-top: 2%;margin-bottom: 1%;"><b>Pull requests</b></h1>
+    </div>
+    <div>
+    <button style='margin-bottom:5px' mat-stroked-button color="primary" [routerLink]="['/gitRepo/new']" >Create pull request</button>
+<br>
+    <mat-accordion > 
+     
+    <mat-expansion-panel *ngFor="let req of pullReqs" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title  >
+          {{req.name}} 
+        </mat-panel-title>
+        <button style="margin-right: 6%;" (click)= "edit(req.id)">Edit</button>
+      <!--  <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description> -->
+      </mat-expansion-panel-header>
+      <button mat-stroked-button color="accent" *ngFor="let issue of req.issues" (click)= "goToIssue()" style='margin-right:16px'>{{issue.title}}</button> 
+    
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+  
