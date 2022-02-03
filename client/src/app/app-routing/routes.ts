@@ -108,7 +108,7 @@ export const routes: Routes = [
       data: {expectedRoles: 'ROLE_USER'}
    }, 
     {
-      path: 'project/new',
+      path: 'project/new/:repoId',
       component: NewProjectComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
