@@ -1,0 +1,44 @@
+
+<br><br>
+<body>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <form class="reactiveForm" [formGroup]="form"  class="form-inline my-2 my-lg-0" *ngIf="!loading">
+        <div class="example-container" style="margin-left: 50px;">
+            <table class="styled-table">
+                <thead>
+                <tr>         
+                    <th>Edit stateChange</th>
+                    <th style="text-align: right; width: fit-content;">
+                        <mat-dialog-actions>
+                            <button mat-raised-button (click)="cancel()" >
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">clear</mat-icon>
+                            </button>
+                            <button  type="submit" mat-raised-button color="success"  id="saveNewResort"(click)="saveChanges()" style="margin-left: 15px;">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">checked</mat-icon>
+                            </button>
+                        </mat-dialog-actions>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>State</mat-label>
+                            <mat-select id="stateSelect" [(value)]="stateSelected" (valueChange)="onSelection($event)">
+                                <mat-option value="OPEN">OPEN</mat-option>
+                                <mat-option value="CLOSED">CLOSED</mat-option>
+                                <mat-option value="MERGED">MERGED</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td></td>
+                </tr>        
+            </tbody>
+            </table>
+            <br><br>
+            
+        <br><br>
+        </div>
+    </form>
+</body>

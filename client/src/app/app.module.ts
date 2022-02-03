@@ -16,6 +16,8 @@ import { LabelModule } from './components/label/label.module';
 import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { GitRepoModule } from './components/gitRepo/git-repo.module';
+import { StateChangeModule } from './components/stateChange/stateChange.module';
 import { MilestoneModule } from './components/milestone/milestone.module';
 import { CommentModule } from './components/comment/comment.module';
 import { EventModule } from './components/event/event.module';
@@ -26,10 +28,12 @@ import { LabelApplicationModule } from './components/labelApplication/labelAppli
     AppComponent,
     NavbarNonAuthComponent,
     NavbarUserComponent
+    
   ],
   imports: [
     AppRoutingModule,
     LabelModule,
+    StateChangeModule,
     MaterialModule,
     MatDialogModule,
     IssueModule,
@@ -42,6 +46,7 @@ import { LabelApplicationModule } from './components/labelApplication/labelAppli
     SharedModule,
     BrowserModule,
     ToastrModule.forRoot(),
+    GitRepoModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],
