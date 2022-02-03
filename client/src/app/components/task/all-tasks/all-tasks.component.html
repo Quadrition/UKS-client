@@ -25,7 +25,7 @@
                 <td>{{task.id}}</td>
                 <td>Task {{task.milestone?.id}} by {{task.creator?.username}}</td>
                 <td>
-                    <button mat-stroked-button (click)="edit(task.id)">Edit</button>
+                    <button mat-stroked-button (click)="edit(task.milestone?.id)">Edit</button>
                 </td>
                 <td>
                     <button mat-stroked-button color="warn" (click)="delete(task.id)">Delete</button>

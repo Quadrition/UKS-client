@@ -80,7 +80,8 @@ export class EditTaskComponent implements OnInit {
   }
   saveChanges(): void {
     this.task.milestone = this.selected;
-   
+    this.task.events = [];
+    
     console.log(this.task.milestone);
     this.taskService.edit(this.task).subscribe(
       res => {
