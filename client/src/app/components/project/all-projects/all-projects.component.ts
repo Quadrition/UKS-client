@@ -40,12 +40,12 @@ export class AllProjectsComponent implements OnInit {
 
   }
   addNew(): void {
-    this.router.navigate(['/project/new'])
+    
 
   }
 
   edit(id: any): void {
-    this.router.navigate(['/project/edit/'+id])
+    this.router.navigate(['/project/details/'+id])
 
   }
 
