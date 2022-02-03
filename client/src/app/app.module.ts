@@ -17,6 +17,9 @@ import { IssueModule } from './components/issue/issue.module';
 import { ProjectModule } from './components/project/project.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MilestoneModule } from './components/milestone/milestone.module';
+import { CommentModule } from './components/comment/comment.module';
+import { EventModule } from './components/event/event.module';
+import { LabelApplicationModule } from './components/labelApplication/labelApplication.module';
 
 @NgModule({
   declarations: [
@@ -32,9 +35,9 @@ import { MilestoneModule } from './components/milestone/milestone.module';
     IssueModule,
     ProjectModule,
     MilestoneModule,
-  //  CommentModule,
-  //  EventModule,
-    //LabelApplicationModule,
+    CommentModule,
+    EventModule,
+    LabelApplicationModule,
     AuthModule,
     SharedModule,
     BrowserModule,

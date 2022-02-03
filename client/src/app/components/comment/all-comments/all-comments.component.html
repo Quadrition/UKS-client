@@ -22,7 +22,7 @@
     <tbody>
       <tr *ngFor="let comment of comments">
         <td>{{comment.creationTime | date}}</td>
-        <td>Task {{comment.task?.id}}</td>
+        <td>{{comment.task}}</td>
         <td>{{comment.content}}</td>
         <td>
           <button mat-stroked-button (click)="edit(comment.id)">Edit</button>

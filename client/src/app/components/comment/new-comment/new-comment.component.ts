@@ -16,6 +16,7 @@ export class NewCommentComponent implements OnInit {
   comment: Comment = {};
   loading = false;
   commentId: any;
+  result: any;
 
   constructor(
     private fb: FormBuilder,

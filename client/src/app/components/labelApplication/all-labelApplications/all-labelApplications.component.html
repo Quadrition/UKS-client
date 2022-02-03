@@ -21,7 +21,7 @@
     <tbody>
       <tr *ngFor="let labelApplication of labelApplications">
         <td>{{labelApplication.creationTime | date}}</td>
-        <td>Task {{labelApplication.task?.id}}</td>
+        <td>{{labelApplication.task}}</td>
         <td>
           <button mat-stroked-button (click)="edit(labelApplication.id)">Edit</button>
         </td>

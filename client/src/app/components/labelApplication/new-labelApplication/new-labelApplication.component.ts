@@ -2,6 +2,7 @@ import { DatePipe, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { LabelApplication } from 'src/app/model/LabelApplication';
 import { LabelApplicationService } from 'src/app/services/labelApplication/labelApplication.service';
 
 @Component({
