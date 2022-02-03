@@ -29,6 +29,9 @@ import { NewLabelApplicationComponent } from '../components/labelApplication/new
 import { LoginGuard } from '../guards/login/login.service';
 import { RoleGuard } from '../guards/role/role.service';
 import { EditGitRepoComponent } from '../components/gitRepo/edit-git-repo/edit-git-repo.component';
+import { NewTaskComponent } from '../components/task/new-task/new-task.component';
+import { AllTasksComponent } from '../components/task/all-tasks/all-tasks.component';
+import { EditTaskComponent } from '../components/task/edit-task/edit-task.component';
 
 
 export const routes: Routes = [
@@ -203,6 +206,24 @@ export const routes: Routes = [
         component: RegistrationComponent,
         canActivate: [LoginGuard]
     },
+    {
+      path: 'task',
+      component: AllTasksComponent,
+      canActivate: [RoleGuard],
+      data: { expectedRoles: 'ROLE_USER' }
+   },
+   {
+      path: 'task/new',
+      component: NewTaskComponent,
+      canActivate: [RoleGuard],
+      data: { expectedRoles: 'ROLE_USER' }
+   },
+   {
+      path: 'task/edit/:id',
+      component: EditTaskComponent,
+      canActivate: [RoleGuard],
+      data: { expectedRoles: 'ROLE_USER' }
+   },
     
     // {
     // putanja kojoj moze da pristupi samo registrivani korisnik sa konkretnom ulogom
