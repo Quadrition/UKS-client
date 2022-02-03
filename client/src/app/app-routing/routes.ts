@@ -52,7 +52,7 @@ export const routes: Routes = [
         data: {expectedRoles: 'ROLE_USER'}
      },
      {
-        path: 'label/new',
+        path: 'label/new/:projectId',
         component: NewLabelComponent,
         canActivate: [RoleGuard],
         data: {expectedRoles: 'ROLE_USER'}
@@ -135,7 +135,7 @@ export const routes: Routes = [
       data: {expectedRoles: 'ROLE_USER'}
    },
    {
-      path: 'milestone/new',
+      path: 'milestone/new/:projectId',
       component: NewMilestoneComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}

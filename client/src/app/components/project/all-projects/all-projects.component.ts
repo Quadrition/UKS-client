@@ -28,7 +28,7 @@ export class AllProjectsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.projectService.getAll().subscribe(
+    this.projectService.getMy().subscribe(
       res => {
         this.projects = res.body as Project[];
        

@@ -35,7 +35,7 @@ export class MilestoneService {
 	}
 	addNew(milestone: any){
 		
-        return this.http.post(`${environment.baseUrl}/${environment.milestone}`, milestone, {headers: this.headers, responseType: 'json'});
+        return this.http.post(`${environment.baseUrl}/${environment.milestone}`, milestone).pipe(map(res => res));
 	}
     getOne(id: any): Observable<any> {
 

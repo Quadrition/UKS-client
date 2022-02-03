@@ -80,7 +80,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   }
   addNewMilestone(): void {
-    this.route.navigate(['/milestone/new'])
+    this.route.navigate(['/milestone/new/'+ this.projectId])
     // sacuvaj milestone u tom projektu
 
   }
@@ -141,7 +141,7 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   addNewLabel() {
-    this.route.navigate(['/label/new']);
+    this.route.navigate(['/label/new/' + this.projectId]);
   }
 
   addNewDeveloper(){

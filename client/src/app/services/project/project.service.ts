@@ -24,6 +24,17 @@ export class ProjectService {
 
 		return this.http.get(`${environment.baseUrl}/${environment.project}`, queryParams).pipe(map(res => res));
 	}
+
+    getMy(): Observable<any> {
+		let queryParams = {};
+        queryParams = {
+            headers: this.headers,
+            observe: 'response',
+            params: new HttpParams()
+        };
+
+		return this.http.get(`${environment.baseUrl}/${environment.project}/my`, queryParams).pipe(map(res => res));
+	}
     
     edit(project: any){
         return this.http.put(`${environment.baseUrl}/${environment.project}`, project, {headers: this.headers, responseType: 'json'});
