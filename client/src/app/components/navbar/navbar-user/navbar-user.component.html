@@ -8,12 +8,7 @@
 		<button id="login" mat-button [routerLink]="['/project']" > Projects </button>
     <button id="login" mat-button [routerLink]="['/gitrepo']" > GitRepo </button>
     <button id="login" mat-button [routerLink]="['/milestone']" > Milestone </button>
-		<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-    <!-- #enddocregion mat-menu-trigger-for -->
-		<mat-menu #menu="matMenu">
-			<button mat-menu-item id="login" [routerLink]="['/stateChange']">StateChange</button>
-			<button mat-menu-item id="login" [routerLink]="['/task']">Task</button>
-		</mat-menu>
+	<button id="login" mat-button [routerLink]="['/task']" > Task </button>
     <button mat-button [routerLink]="['/event']" > Event </button>
 		<button id="register" mat-button (click)="signOut()" > Sign out </button>
 	</span>
