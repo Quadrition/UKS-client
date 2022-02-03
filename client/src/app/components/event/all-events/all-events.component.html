@@ -21,7 +21,7 @@
     <tbody>
       <tr *ngFor="let event of events">
         <td>{{event.creationTime | date}}</td>
-        <td>{{event.task}}</td>
+        <td>Task {{event.task?.id}} by {{event.task?.creator?.username}} </td>
         <td>
           <button mat-stroked-button (click)="edit(event.id)">Edit</button>
         </td>
