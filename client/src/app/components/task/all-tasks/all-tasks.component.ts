@@ -39,12 +39,16 @@ export class AllTasksComponent implements OnInit {
   }
 
   edit(id: any): void {
-    this.router.navigate(['/task/edit/' + id])
+    this.router.navigate(['/milestone/edit/' + id])
   }
 
   addNew(): void {
     this.router.navigate(['/task/new'])
 
+  }
+
+  goToMilestones(): void {
+    this.router.navigate(['/milestone'])
   }
 
   delete(id: any): void {
