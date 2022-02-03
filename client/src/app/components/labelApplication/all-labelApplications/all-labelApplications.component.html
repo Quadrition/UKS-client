@@ -1,32 +1,87 @@
 <br><br>
-<div style="margin-left: 20px;">
-  <br>
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th>Label Applications</th>
-        <th></th>
-        <th><button mat-raised-button (click)="cancel()">Go back</button></th>
-        <th><button mat-raised-button (click)="addNew()">Add new</button></th>
-      </tr>
-      <tr>
-        <th>Creation time</th>
-        <th>Task</th>
-        <th>Edit Label Application</th>
-        <th>Delete Label Application</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let labelApplication of labelApplications">
-        <td>{{labelApplication.creationTime | date}}</td>
-        <td>Task {{labelApplication.task?.id}} by {{labelApplication.task?.creator?.username}} </td>
-        <td>
-          <button mat-stroked-button (click)="edit(labelApplication.id)">Edit</button>
-        </td>
-        <td>
-          <button mat-stroked-button color="warn" (click)="delete(labelApplication.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<br><br>
+<form class="reactiveForm" [formGroup]="searchForm" (ngSubmit)="search()"
+  style="display: block; width: 200px; height: 80px; margin-left:auto; margin-right:auto;">
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Search by id</mat-label>
+      <input id="searchLabelApplication" matInput formControlName="id">
+    </mat-form-field>
+    <div style="display: inline-block;">
+      <mat-dialog-actions align="center">
+        <button id="submitSearch" type="submit" mat-raised-button color="success">Search</button>
+        <button id="refresh" (click)="refresh()" mat-raised-button style="margin-left: 15px;">Refresh</button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+</form>
+
+<br><br>
+<br><br>
+<div>
+  <div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table" *ngIf="foundLabelApplication != undefined">
+      <thead>
+        <tr>
+          <th>Found Label Application</th>
+          <th></th>
+          <th><button mat-raised-button (click)="cancel()">Go back</button></th>
+          <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+        </tr>
+        <tr>
+          <th>Creation time</th>
+          <th>Task</th>
+          <th>Edit Label Application</th>
+          <th>Delete Label Application</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{foundLabelApplication.creationTime | date}}</td>
+          <td>Task {{foundLabelApplication.task?.id}} by {{foundLabelApplication.task?.creator?.username}} </td>
+          <td>
+            <button mat-stroked-button (click)="edit(foundLabelApplication.id)">Edit</button>
+          </td>
+          <td>
+            <button mat-stroked-button color="warn" (click)="delete(foundLabelApplication.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br><br>
+  <br><br>
+
+  <div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Label Applications</th>
+          <th></th>
+          <th><button mat-raised-button (click)="cancel()">Go back</button></th>
+          <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+        </tr>
+        <tr>
+          <th>Creation time</th>
+          <th>Task</th>
+          <th>Edit Label Application</th>
+          <th>Delete Label Application</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let labelApplication of labelApplications">
+          <td>{{labelApplication.creationTime | date}}</td>
+          <td>Task {{labelApplication.task?.id}} by {{labelApplication.task?.creator?.username}} </td>
+          <td>
+            <button mat-stroked-button (click)="edit(labelApplication.id)">Edit</button>
+          </td>
+          <td>
+            <button mat-stroked-button color="warn" (click)="delete(labelApplication.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

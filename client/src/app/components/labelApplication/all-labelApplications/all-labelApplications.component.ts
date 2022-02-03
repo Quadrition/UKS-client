@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,12 +16,14 @@ import { ConfirmationComponent, ConfirmDialogModel } from '../../shared/confirma
 export class AllLabelApplicationsComponent implements OnInit {
 
   labelApplications: LabelApplication[] = [];
+  foundLabelApplication!: LabelApplication;
   result: any;
   searchForm!: FormGroup;
 
   constructor(
     private labelApplicationService: LabelApplicationService,
     public dialog: MatDialog,
+    private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
     private location: Location,
@@ -32,6 +34,24 @@ export class AllLabelApplicationsComponent implements OnInit {
       res => {
         this.labelApplications = res.body as LabelApplication[];
       });
+
+    this.searchForm = this.fb.group({
+      id: ['']
+    });
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+  search(): void {
+    if (this.searchForm.value.id != "") {
+      this.labelApplicationService.search(this.searchForm.value.id).subscribe(
+        res => {
+          this.foundLabelApplication = res.body as LabelApplication;
+        }
+      )
+    }
   }
 
   edit(id: any): void {

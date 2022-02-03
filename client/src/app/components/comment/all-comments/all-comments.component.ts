@@ -30,7 +30,6 @@ export class AllCommentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.foundComment);
     this.commentService.getAll().subscribe(
       res => {
         this.comments = res.body as Comment[];
