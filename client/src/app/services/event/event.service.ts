@@ -24,6 +24,16 @@ export class EventService {
     return this.http.get(`${environment.baseUrl}/${environment.event}`, queryParams).pipe(map(res => res));
   }
 
+  search(id: any): Observable<any> {
+    let queryParams = {};
+    queryParams = {
+      headers: this.headers,
+      observe: 'response',
+      params: new HttpParams()
+    };
+    return this.http.get(`${environment.baseUrl}/${environment.event}/search/` + id, queryParams).pipe(map(res => res));
+  }
+
   edit(event: any) {
     return this.http.put(`${environment.baseUrl}/${environment.event}`, event, { headers: this.headers, responseType: 'json' });
   }
