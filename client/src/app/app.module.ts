@@ -20,6 +20,9 @@ import { GitRepoModule } from './components/gitRepo/git-repo.module';
 import { StateChangeModule } from './components/stateChange/stateChange.module';
 import { MilestoneModule } from './components/milestone/milestone.module';
 import { TaskModule } from './components/task/task.module';
+import { CommentModule } from './components/comment/comment.module';
+import { EventModule } from './components/event/event.module';
+import { LabelApplicationModule } from './components/labelApplication/labelApplication.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { TaskModule } from './components/task/task.module';
     IssueModule,
     ProjectModule,
     MilestoneModule,
+    CommentModule,
+    EventModule,
+    LabelApplicationModule,
     AuthModule,
     SharedModule,
     BrowserModule,

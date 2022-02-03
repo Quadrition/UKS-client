@@ -1,0 +1,34 @@
+<br><br>
+<div style="margin-left: 20px;">
+  <br>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Events</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+      </tr>
+      <tr>
+        <th>Creation time</th>
+        <th>Task</th>
+        <th>Edit event</th>
+        <th>Delete event</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{event.creationTime | date}}</td>
+        <td>Task {{event.task?.id}} by {{event.task?.creator?.username}} </td>
+        <td>
+          <button mat-stroked-button (click)="edit(event.id)">Edit</button>
+        </td>
+        <td>
+          <button mat-stroked-button color="warn" (click)="delete(event.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Label } from 'src/app/model/Label';
 import { LabelApplication } from 'src/app/model/LabelApplication';
-import { LabelApplicationService } from 'src/app/services/label-application/label-application.service';
+import { LabelApplicationService } from 'src/app/services/labelApplication/labelApplication.service';
 import { LabelService } from 'src/app/services/label/label.service';
 import { Location } from '@angular/common';
 
@@ -22,7 +22,7 @@ export class NewLabelComponent implements OnInit {
   labelApplication!: LabelApplication;
   applications: LabelApplication[] = [];
   selected: any;
-  
+
 
   constructor(
     private fb: FormBuilder,
@@ -49,7 +49,7 @@ export class NewLabelComponent implements OnInit {
   saveChanges(): void{
     this.label.name = this.form.value.name;
     this.label.labelApplication = this.labelApplication;
-    
+
     console.log(this.label);
     this.labelService.addNew(this.label).subscribe(
       res => {
@@ -67,6 +67,6 @@ export class NewLabelComponent implements OnInit {
   }
   onSelection(event: any): void{
     this.labelApplication = this.selected;
-    
+
   }
 }
