@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AllPullRequestsComponent } from './all-pull-requests/all-pull-requests.component';
+import { EditPullRequestComponent } from './edit-pull-request/edit-pull-request.component';
 
 @NgModule({
     declarations: [
-    AllPullRequestsComponent
-  ],//[AllGitReposComponent, NewGitRepoComponent, EditGitRepoComponent],
+    AllPullRequestsComponent,
+    EditPullRequestComponent
+  ],
     imports: [ MaterialModule, RouterModule, MatDialogModule],
-    exports:[AllPullRequestsComponent],// [AllGitReposComponent, NewGitRepoComponent,EditGitRepoComponent],
+    exports:[AllPullRequestsComponent,EditPullRequestComponent],
     providers: []
   })
   

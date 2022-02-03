@@ -9,12 +9,12 @@
         <mat-panel-title  >
           {{req.name}} 
         </mat-panel-title>
-        <button style="margin-right: 6%;" (click)= "proba()">Edit</button>
+        <button style="margin-right: 6%;" (click)= "edit(req.id)">Edit</button>
       <!--  <mat-panel-description>
           Currently I am {{panelOpenState ? 'open' : 'closed'}}
         </mat-panel-description> -->
       </mat-expansion-panel-header>
-      <button *ngFor="let issue of req.issues" (click)= "proba()" style='margin-right:16px'>{{issue.title}}</button> 
+      <button *ngFor="let issue of req.issues" (click)= "goToIssue()" style='margin-right:16px'>{{issue.title}}</button> 
     
     </mat-expansion-panel>
   </mat-accordion>

@@ -1,3 +1,4 @@
+import { EditPullRequestComponent } from './../components/pullRequest/edit-pull-request/edit-pull-request.component';
 import { AllPullRequestsComponent } from './../components/pullRequest/all-pull-requests/all-pull-requests.component';
 import { PullReqModule } from './../components/pullRequest/pull-request.module';
 import { NewGitRepoComponent } from './../components/gitRepo/new-git-repo/new-git-repo.component';
@@ -208,6 +209,12 @@ export const routes: Routes = [
     {
       path: 'pullReq',
       component: AllPullRequestsComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },
+     {
+      path: 'pullReq/edit/:id',
+      component: EditPullRequestComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
      },

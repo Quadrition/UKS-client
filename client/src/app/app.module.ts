@@ -28,7 +28,8 @@ import { LabelApplicationModule } from './components/labelApplication/labelAppli
   declarations: [
     AppComponent,
     NavbarNonAuthComponent,
-    NavbarUserComponent
+    NavbarUserComponent,
+    
     
   ],
   imports: [

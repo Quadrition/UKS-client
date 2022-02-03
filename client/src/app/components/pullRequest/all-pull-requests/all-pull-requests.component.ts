@@ -22,8 +22,12 @@ export class AllPullRequestsComponent implements OnInit {
 
   panelOpenState = false;
 
-  proba(){
-    this.router.navigate(['/gitRepo'])
+  edit(id: any){
+    this.router.navigate(['/pullReq/edit/'+id])
+  }
+
+  goToIssue(){
+    this.router.navigate(['/pullReq/'])
   }
   reqs = [ "Item 1", "Item 2", "Item 3", "Item 4"];
   pullReqs: PullRequest[] = [];
