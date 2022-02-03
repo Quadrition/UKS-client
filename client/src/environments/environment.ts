@@ -18,7 +18,8 @@ export const environment = {
   event: 'api/event',
   comment: 'api/comment',
   gitRepo: 'api/gitRepo',
-  stateChange: 'api/stateChange'
+  stateChange: 'api/stateChange',
+  pullReq: 'api/pullReq'
 };
 
 /*

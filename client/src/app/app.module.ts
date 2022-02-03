@@ -1,3 +1,4 @@
+import { PullReqModule } from './components/pullRequest/pull-request.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -46,7 +47,8 @@ import { LabelApplicationModule } from './components/labelApplication/labelAppli
     SharedModule,
     BrowserModule,
     ToastrModule.forRoot(),
-    GitRepoModule
+    GitRepoModule,
+    PullReqModule
 
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],

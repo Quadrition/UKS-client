@@ -1,3 +1,5 @@
+import { AllPullRequestsComponent } from './../components/pullRequest/all-pull-requests/all-pull-requests.component';
+import { PullReqModule } from './../components/pullRequest/pull-request.module';
 import { NewGitRepoComponent } from './../components/gitRepo/new-git-repo/new-git-repo.component';
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '../components/auth/login-page/login-page.component';
@@ -203,6 +205,13 @@ export const routes: Routes = [
         component: RegistrationComponent,
         canActivate: [LoginGuard]
     },
+    {
+      path: 'pullReq',
+      component: AllPullRequestsComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },
+    
     
     // {
     // putanja kojoj moze da pristupi samo registrivani korisnik sa konkretnom ulogom
