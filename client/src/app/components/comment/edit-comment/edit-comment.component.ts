@@ -20,7 +20,6 @@ export class EditCommentComponent implements OnInit {
   task!: Task;
   tasks: Task[] = [];
   selectedTask: any;
-  commentDefault: any;
   loading = false;
   commentId: any;
 
@@ -41,6 +40,7 @@ export class EditCommentComponent implements OnInit {
       });
     this.createForm();
     this.commentId = this.router.snapshot.params.id;
+
     this.commentService.getOne(this.commentId).subscribe(
       res => {
         this.comment = res.body as Comment;
@@ -69,6 +69,7 @@ export class EditCommentComponent implements OnInit {
       this.task = this.form.value.task;
     }
     this.comment.task = this.task;
+
     this.commentService.edit(this.comment).subscribe(
       res => {
         this.loading = false;

@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Task } from 'src/app/model/Task';
 import { LabelApplication } from 'src/app/model/LabelApplication';
 import { LabelApplicationService } from 'src/app/services/labelApplication/labelApplication.service';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-edit-labelApplication',
@@ -15,12 +17,16 @@ export class EditLabelApplicationComponent implements OnInit {
 
   form!: FormGroup;
   labelApplication: LabelApplication = {};
+  task!: Task;
+  tasks: Task[] = [];
+  selectedTask: any;
   loading = false;
   labelApplicationId: any;
 
   constructor(
     private fb: FormBuilder,
     private labelApplicationService: LabelApplicationService,
+    private taskService: TaskService,
     private router: ActivatedRoute,
     private toastr: ToastrService,
     private location: Location,
@@ -28,6 +34,10 @@ export class EditLabelApplicationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.taskService.getAll().subscribe(
+      res => {
+        this.tasks = res.body as Task[];
+      });
     this.createForm();
     this.labelApplicationId = this.router.snapshot.params.id;
 
@@ -36,8 +46,9 @@ export class EditLabelApplicationComponent implements OnInit {
         this.labelApplication = res.body as LabelApplication;
         this.form = this.fb.group({
           creationTime: [this.datepipe.transform(this.labelApplication.creationTime, 'yyyy-MM-dd')],
-          // task: [this.labelApplication.task]
+          task: [this.labelApplication.task]
         });
+        this.selectedTask = this.labelApplication.task;
       }
     );
   }
@@ -45,13 +56,17 @@ export class EditLabelApplicationComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       creationTime: ['', Validators.required],
-      // task: ['', Validators.required],
+      task: ['', Validators.required],
     });
   }
 
   saveChanges(): void {
     this.labelApplication.creationTime = this.form.value.creationTime;
-    //this.labelApplication.task = this.form.value.task;
+    if (this.task === undefined) {
+      this.task = this.form.value.task;
+    }
+    this.labelApplication.task = this.task;
+
     this.labelApplicationService.edit(this.labelApplication).subscribe(
       res => {
         this.loading = false;
@@ -60,6 +75,10 @@ export class EditLabelApplicationComponent implements OnInit {
         this.location.back();
       }
     )
+  }
+
+  onSelection(event: any): void {
+    this.task = this.selectedTask;
   }
 
   cancel(): void {
