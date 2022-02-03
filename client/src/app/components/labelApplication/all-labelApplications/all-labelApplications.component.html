@@ -1,0 +1,34 @@
+<br><br>
+<div style="margin-left: 20px;">
+  <br>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Label Applications</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+      </tr>
+      <tr>
+        <th>Creation time</th>
+        <th>Task</th>
+        <th>Edit Label Application</th>
+        <th>Delete Label Application</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let labelApplication of labelApplications">
+        <td>{{labelApplication.creationTime | date}}</td>
+        <td>Task {{labelApplication.task?.id}}</td>
+        <td>
+          <button mat-stroked-button (click)="edit(labelApplication.id)">Edit</button>
+        </td>
+        <td>
+          <button mat-stroked-button color="warn" (click)="delete(labelApplication.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
