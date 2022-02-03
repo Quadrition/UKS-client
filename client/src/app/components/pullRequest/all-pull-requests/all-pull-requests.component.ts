@@ -26,6 +26,12 @@ export class AllPullRequestsComponent implements OnInit {
     this.router.navigate(['/pullReq/edit/'+id])
   }
 
+  addNewIssue(id: any){
+    console.log("iz pull req componente")
+    console.log(id)
+    this.router.navigate(['/issue/new/'+id])
+  }
+
   goToIssue(){
     this.router.navigate(['/pullReq/'])
   }
