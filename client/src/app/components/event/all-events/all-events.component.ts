@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +15,6 @@ export class AllEventsComponent implements OnInit {
 
   events: Event[] = [];
   result: any;
-  searchForm!: FormGroup;
 
   constructor(
     private eventService: EventService,
@@ -30,6 +28,18 @@ export class AllEventsComponent implements OnInit {
       res => {
         this.events = res.body as Event[];
       });
+  }
+
+  goToComments(): void {
+    this.router.navigate(['/comment'])
+  }
+
+  goToLabelApplications(): void {
+    this.router.navigate(['/labelApplication'])
+  }
+
+  goToStateChanges(): void {
+    this.router.navigate(['/stateChange'])
   }
 
   edit(id: any): void {
