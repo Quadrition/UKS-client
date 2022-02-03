@@ -37,7 +37,7 @@ export class EditCommentComponent implements OnInit {
         this.form = this.fb.group({
           creationTime: [this.datepipe.transform(this.comment.creationTime, 'yyyy-MM-dd')],
           content: [this.comment.content],
-          // task: [this.comment.task]
+          task: [this.comment.task]
         });
       }
     );
@@ -47,14 +47,14 @@ export class EditCommentComponent implements OnInit {
     this.form = this.fb.group({
       creationTime: ['', Validators.required],
       content: ['', Validators.required],
-      // task: ['', Validators.required],
+      task: ['', Validators.required],
     });
   }
 
   saveChanges(): void {
     this.comment.creationTime = this.form.value.creationTime;
     this.comment.content = this.form.value.content;
-    //this.comment.task = this.form.value.task;
+    this.comment.task = this.form.value.task;
     this.commentService.edit(this.comment).subscribe(
       res => {
         this.loading = false;
