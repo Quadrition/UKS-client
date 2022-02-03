@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Location } from '@angular/common';
+import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -23,6 +24,7 @@ export class AllLabelApplicationsComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private toastr: ToastrService,
+    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -62,5 +64,9 @@ export class AllLabelApplicationsComponent implements OnInit {
           });
       }
     })
+  }
+
+  cancel(): void {
+    this.location.back();
   }
 }
