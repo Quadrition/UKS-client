@@ -25,12 +25,14 @@
             <th>Projects</th>
             <th></th>
             <th></th>
-            <th><button mat-raised-button (click)="addNew()">Add new</button></th>   
+            <th></th>
+            <th><button mat-raised-button disabled (click)="addNew()">Add new</button></th>   
         </tr>
         <tr>         
          
             <th>Title</th>
             <th>GitRepo</th>
+            <th>Leader</th>
             <th>Edit project</th>
             <th>Delete project</th>
             <!-- <th  *ngIf="role == 'ROLE_ADMIN'">Delete label</th> -->
@@ -44,6 +46,7 @@
             </td>
             <!-- <td>{{res.seasonStarts | date}}</td> -->
             <td>{{proj.gitRepo?.name}}</td>
+            <td>{{proj.leader?.username}}</td>
             <td>
                 <button mat-stroked-button (click)="edit(proj.id)">Edit</button>
             </td>
