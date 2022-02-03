@@ -1,16 +1,17 @@
 <br><br>
 <br><br>
 <form class="reactiveForm" [formGroup]="searchForm" (ngSubmit)="search()"
-  style="display: block; width: 200px; height: 80px; margin-left:auto; margin-right:auto;">
+  style="display: block; width: 350px; height: 80px; margin-left:auto; margin-right:auto;">
   <div class="example-container">
     <mat-form-field appearance="fill">
       <mat-label>Search by id</mat-label>
       <input id="searchContent" matInput formControlName="id">
     </mat-form-field>
     <div style="display: inline-block;">
-      <mat-dialog-actions align="center">
+      <mat-dialog-actions align="left">
         <button id="submitSearch" type="submit" mat-raised-button color="success">Search</button>
         <button id="refresh" (click)="refresh()" mat-raised-button style="margin-left: 15px;">Refresh</button>
+        <button id="refresh" (click)="cancel()" mat-raised-button style="margin-left: 15px;">Go back</button>
       </mat-dialog-actions>
     </div>
   </div>
@@ -24,10 +25,10 @@
     <table class="styled-table" *ngIf="foundComment != undefined">
       <thead>
         <tr>
-          <th>Found Comment</th>
+          <th>Found</th>
           <th></th>
           <th></th>
-          <th><button mat-raised-button (click)="cancel()">Go back</button></th>
+          <th></th>
           <th><button mat-raised-button (click)="addNew()">Add new</button></th>
         </tr>
         <tr>
@@ -65,7 +66,7 @@
           <th>Comments</th>
           <th></th>
           <th></th>
-          <th><button mat-raised-button (click)="cancel()">Go back</button></th>
+          <th></th>
           <th><button mat-raised-button (click)="addNew()">Add new</button></th>
         </tr>
         <tr>
