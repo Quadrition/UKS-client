@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { GitRepoModule } from './components/gitRepo/git-repo.module';
 import { StateChangeModule } from './components/stateChange/stateChange.module';
 import { MilestoneModule } from './components/milestone/milestone.module';
+import { TaskModule } from './components/task/task.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MilestoneModule } from './components/milestone/milestone.module';
   imports: [
     AppRoutingModule,
     LabelModule,
+    TaskModule,
     StateChangeModule,
     MaterialModule,
     MatDialogModule,

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { StateChange } from 'src/app/model/StateChange';
 import { Task } from 'src/app/model/Task';
 import { StateChangeService } from 'src/app/services/stateChange/stateChange.service';
+import { TaskService } from 'src/app/services/task/task.service';
 import { SortDirection } from '@angular/material/sort';
 
 @Component({
@@ -19,32 +20,38 @@ export class NewStateChangeComponent implements OnInit {
   stateChange: StateChange = {};
   loading = false;
   selected: any;
-  stateChangeId:any;
+  stateChangeId: any;
   stateSelected: any;
+  task!: Task;
   tasks: Task[] = [];
 
   constructor(
     private fb: FormBuilder,
     private stateChangeService: StateChangeService,
+    private taskService: TaskService,
     private route: Router,
     private toastr: ToastrService,
     public datepipe: DatePipe,
   ) { }
 
   ngOnInit(): void {
-    
+    this.taskService.getAll().subscribe(
+      res => {
+        this.tasks = res.body as Task[]
+      }
+    );
     this.createForm();
   }
-  createForm(): void{
+  createForm(): void {
     this.form = this.fb.group({
       creationTime: ['', Validators.required],
-      });
+    });
   }
-  saveChanges(): void{
+  saveChanges(): void {
     this.stateChange.creationTime = this.form.value.creationTime;
-    //this.label.labelApplication = this.labelApplication;
-    this.stateChange.task = {};
-    
+    this.stateChange.task = this.task;
+  
+
     console.log(this.stateChange);
     this.stateChangeService.addNew(this.stateChange).subscribe(
       res => {
@@ -55,12 +62,13 @@ export class NewStateChangeComponent implements OnInit {
       }
     )
   }
-  cancel(): void{
+  cancel(): void {
     this.route.navigate(['/stateChange']);
   }
-  onSelection(event: any): void{
-    this.stateChange.newState = this.stateSelected;;
-    
+  onSelection(event: any): void {
+    this.stateChange.newState = this.stateSelected;
+    this.task = this.selected;
+
   }
 
 }

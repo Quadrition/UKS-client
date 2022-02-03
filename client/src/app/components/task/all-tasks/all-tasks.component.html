@@ -1,0 +1,38 @@
+<br><br>
+
+<div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+        <thead>
+            <tr>
+
+                <th>Tasks</th>
+                <th></th>
+                <th></th>
+                <th><button mat-raised-button (click)="addNew()">Add new</button></th>
+            </tr>
+            <tr>
+
+                <th>Task id</th>
+                <th>Milestone id</th>
+                <th>Edit task</th>
+                <th>Delete task</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <td>{{task.id}}</td>
+                <td>{{task.id}}</td>
+                <td>
+                    <button mat-stroked-button (click)="edit(task.id)">Edit</button>
+                </td>
+                <td>
+                    <button mat-stroked-button color="warn" (click)="delete(task.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
