@@ -1,9 +1,15 @@
+import { NewGitRepoComponent } from './../components/gitRepo/new-git-repo/new-git-repo.component';
 import { Routes } from '@angular/router';
 import { LoginPageComponent } from '../components/auth/login-page/login-page.component';
+import { AllGitReposComponent } from '../components/gitRepo/all-git-repos/all-git-repos.component';
 import { RegistrationComponent } from '../components/auth/registration/registration.component';
 import { AllLabelsComponent } from '../components/label/all-labels/all-labels.component';
 import { EditLabelComponent } from '../components/label/edit-label/edit-label.component';
 import { NewLabelComponent } from '../components/label/new-label/new-label.component';
+
+import { AllStateChangesComponent } from '../components/stateChange/all-state-changes/all-state-changes.component';
+import { EditStateChangeComponent } from '../components/stateChange/edit-state-change/edit-state-change.component';
+import { NewStateChangeComponent } from '../components/stateChange/new-state-change/new-state-change.component';
 import { AllMilestonesComponent } from '../components/milestone/all-milestones/all-milestones.component';
 import { EditMilestoneComponent } from '../components/milestone/edit-milestone/edit-milestone.component';
 import { NewMilestoneComponent } from '../components/milestone/new-milestone/new-milestone.component';
@@ -22,6 +28,7 @@ import { EditLabelApplicationComponent } from '../components/labelApplication/ed
 import { NewLabelApplicationComponent } from '../components/labelApplication/new-labelApplication/new-labelApplication.component';
 import { LoginGuard } from '../guards/login/login.service';
 import { RoleGuard } from '../guards/role/role.service';
+import { EditGitRepoComponent } from '../components/gitRepo/edit-git-repo/edit-git-repo.component';
 
 
 export const routes: Routes = [
@@ -53,6 +60,31 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: {expectedRoles: 'ROLE_USER'}
      },
+     {
+      path: 'gitRepo',
+      component: AllGitReposComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },
+     {
+      path: 'gitRepo/new',
+      component: NewGitRepoComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },  
+     {
+      path: 'gitRepo/edit/:id',
+      component: EditGitRepoComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },   
+
+     {
+      path: 'stateChange',
+      component: AllStateChangesComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+     },
 
      {
       path: 'project',
@@ -60,13 +92,28 @@ export const routes: Routes = [
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
    },
+ 
    {
+
+      path: 'stateChange/new',
+      component: NewStateChangeComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+   }, 
+    {
       path: 'project/new',
       component: NewProjectComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
    },
    {
+
+      path: 'stateChange/edit/:id',
+      component: EditStateChangeComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+   },
+    {
       path: 'project/edit/:id',
       component: EditProjectComponent,
       canActivate: [RoleGuard],
@@ -149,13 +196,14 @@ export const routes: Routes = [
       component: EditLabelApplicationComponent,
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
-   }
-    // {
-    //     path: 'register',
-    //     component: RegisterPageComponent,
-    //     canActivate: [LoginGuard]
-    // },
-
+   },
+    {
+        path: 'register',
+        //component: RegisterPageComponent,
+        component: RegistrationComponent,
+        canActivate: [LoginGuard]
+    },
+    
     // {
     // putanja kojoj moze da pristupi samo registrivani korisnik sa konkretnom ulogom
     //     path: 'favorites',

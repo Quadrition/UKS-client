@@ -1,0 +1,39 @@
+<br><br>
+
+<div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+        <thead>
+        <tr>         
+         
+            <th>StateChanges</th>
+            <th></th>
+            <th></th>
+            <th><button mat-raised-button [routerLink]="['/stateChange/new']">Add new</button></th>   
+        </tr>
+        <tr>         
+         
+            <th>New state</th>
+            <th>Creation date</th>
+            <th>Edit stateChange</th>
+            <th>Delete stateChange</th>
+            <!-- <th  *ngIf="role == 'ROLE_ADMIN'">Delete label</th> -->
+        
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stateChange of stateChanges">
+            <td>{{stateChange.newState}}</td>
+            <td>{{stateChange.creationTime|date}}</td>
+            <td>
+                <button mat-stroked-button (click)="edit(stateChange.id)">Edit</button>
+            </td>
+            <td>
+                <button mat-stroked-button color="warn" (click)="delete(stateChange.id)">Delete</button>
+            </td>
+            </tr>
+    </tbody>
+
+    </table>
+    
+</div>
