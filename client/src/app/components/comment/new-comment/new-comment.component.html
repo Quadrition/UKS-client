@@ -45,16 +45,18 @@
             </td>
             <td></td>
           </tr>
-          <td>
-            <mat-form-field appearance="fill">
-              <mat-label>Task</mat-label>
-              <mat-select id="task" [(value)]="selectedTask" (valueChange)="onSelection($event)">
-                <mat-option *ngFor="let task of tasks" id="task{{task.id}}" [value]="task">
-                  {{task.id}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </td>
+          <tr>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Task</mat-label>
+                <mat-select id="task" [(value)]="selectedTask" (valueChange)="onSelection($event)">
+                  <mat-option *ngFor="let task of tasks" id="task{{task.id}}" [value]="task">
+                    {{task.id}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
