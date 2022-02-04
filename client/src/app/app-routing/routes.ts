@@ -40,6 +40,7 @@ import { EditTaskComponent } from '../components/task/edit-task/edit-task.compon
 import { UserChooserComponent } from '../components/user/user-chooser/user-chooser.component';
 import { RepoComponent } from '../components/gitRepo/repo/repo.component';
 import { ProfileDetailsComponent } from '../components/user/profile-details/profile-details.component';
+import { CommitsListComponent } from '../components/commit/commits-list/commits-list.component';
 
 export const routes: Routes = [
   {
@@ -269,6 +270,12 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileDetailsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'gitRepo/commits',
+    component: CommitsListComponent,
     canActivate: [RoleGuard],
     data: { expectedRoles: 'ROLE_USER' },
   },

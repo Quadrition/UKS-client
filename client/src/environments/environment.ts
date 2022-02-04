@@ -24,6 +24,7 @@ export const environment = {
   issue: 'api/issue',
   history: 'api/history',
   branch: 'api/branch',
+  commit: 'api/commit',
 };
 
 /*

@@ -7,7 +7,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EditBranchDialogComponent } from './edit-branch-dialog/edit-branch-dialog.component';
 
 @NgModule({
-  declarations: [NewBranchDialogComponent, BranchesListComponent, EditBranchDialogComponent],
+  declarations: [
+    NewBranchDialogComponent,
+    BranchesListComponent,
+    EditBranchDialogComponent,
+  ],
   imports: [CommonModule, MaterialModule, MatDialogModule],
   exports: [BranchesListComponent],
 })
