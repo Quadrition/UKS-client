@@ -63,4 +63,20 @@
       <br><br>
     </div>
   </form>
+  <br><br>
+  <div style="margin-left: 20px;">
+      <br>
+      <table class="styled-table">
+          <thead>
+          <tr>         
+              <th>HISTORY</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let h of history">
+              <td>{{h.comment}}</td>
+           </tr>
+      </tbody>
+      </table>
+  </div>
 </body>

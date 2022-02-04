@@ -7,6 +7,8 @@ import { LabelApplication } from 'src/app/model/LabelApplication';
 import { LabelApplicationService } from 'src/app/services/labelApplication/labelApplication.service';
 import { LabelService } from 'src/app/services/label/label.service';
 import { Location } from '@angular/common';
+import { HistoryService } from 'src/app/services/history/history.service';
+import { History } from 'src/app/model/History';
 
 
 @Component({
@@ -21,11 +23,13 @@ export class EditLabelComponent implements OnInit {
   loading = false;
   selected: any;
   labelId: any;
+  history: History[] = [];
 
   constructor(
     private fb: FormBuilder,
     private labelService: LabelService,
     private route: Router,
+    private historyService: HistoryService,
     private router: ActivatedRoute,
     private location: Location,
     private toastr: ToastrService,
@@ -44,6 +48,11 @@ export class EditLabelComponent implements OnInit {
 
       }
     );
+    this.historyService.getHistory("label"+this.labelId).subscribe(
+      res => {
+        this.history = res.body as History[];
+      }
+    )
 
   }
   createForm(): void{
@@ -52,6 +61,14 @@ export class EditLabelComponent implements OnInit {
       });
   }
   saveChanges(): void{
+    if(this.label.name != this.form.value.name){
+      let input = "label"+this.labelId+" name changed from " + this.label.name +" to " + this.form.value.name;
+      this.historyService.addNew({comment: input}).subscribe(
+        res => {
+          console.log("History added")
+        }
+      );
+    }
     this.label.name = this.form.value.name;
     console.log(this.label);
     this.labelService.edit(this.label).subscribe(

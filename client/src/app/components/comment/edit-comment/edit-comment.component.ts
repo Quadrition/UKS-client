@@ -4,8 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Comment } from 'src/app/model/Comment';
+import { History } from 'src/app/model/History';
 import { Task } from 'src/app/model/Task';
 import { CommentService } from 'src/app/services/comment/comment.service';
+import { HistoryService } from 'src/app/services/history/history.service';
 import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
@@ -22,6 +24,7 @@ export class EditCommentComponent implements OnInit {
   selectedTask: any;
   loading = false;
   commentId: any;
+  history: History[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +34,7 @@ export class EditCommentComponent implements OnInit {
     private toastr: ToastrService,
     private location: Location,
     public datepipe: DatePipe,
+    private historyService: HistoryService,
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +56,11 @@ export class EditCommentComponent implements OnInit {
         this.selectedTask = this.comment.task;
       }
     );
+    this.historyService.getHistory("comment"+this.commentId).subscribe(
+      res => {
+        this.history = res.body as History[];
+      }
+    )
   }
 
   createForm(): void {
@@ -63,10 +72,26 @@ export class EditCommentComponent implements OnInit {
   }
 
   saveChanges(): void {
+    if(this.comment.content != this.form.value.content){
+      let input = "comment"+this.commentId + " changed content from "+this.comment.content + " to " +this.form.value.content;
+      this.historyService.addNew({comment: input}).subscribe(
+        res => {
+          console.log("History added");
+        }
+      )
+    }
     this.comment.creationTime = this.form.value.creationTime;
     this.comment.content = this.form.value.content;
     if (this.task === undefined) {
       this.task = this.form.value.task;
+    }
+    if(this.task != this.comment.task){
+      let input = "comment"+this.commentId + " changed task from "+this.comment.task?.id + " to " +this.task.id;
+      this.historyService.addNew({comment: input}).subscribe(
+        res => {
+          console.log("History added");
+        }
+      )
     }
     this.comment.task = this.task;
 
