@@ -1,0 +1,63 @@
+<div class="root">
+  <div class="repo-header">
+    <div class="repo-title">
+      <mat-icon aria-hidden="false" inline="true" aria-label="Example home icon"
+        >developer_board</mat-icon
+      >
+      Repository
+    </div>
+    <div class="repo-title-right">
+      <mat-button-toggle value="sugar"
+        ><div class="star-content">
+          <mat-icon
+            aria-hidden="false"
+            inline="true"
+            aria-label="Example home icon"
+            >star</mat-icon
+          >Star
+        </div></mat-button-toggle
+      >
+      <mat-button-toggle value="sugar"
+        ><div class="star-content">
+          <mat-icon
+            aria-hidden="false"
+            inline="true"
+            aria-label="Example home icon"
+            >visibility</mat-icon
+          >Watch
+        </div></mat-button-toggle
+      >
+      <button mat-raised-button>
+        <div class="star-content">
+          <mat-icon
+            aria-hidden="false"
+            inline="true"
+            aria-label="Example home icon"
+            >mediation</mat-icon
+          >Fork
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Code"
+      ><div class="tab-code-wrap">
+        <mat-card class="tab-code"
+          ><mat-list>
+            <div mat-subheader>Files</div>
+            <mat-list-item *ngFor="let file of files">
+              <mat-icon mat-list-icon>{{ file.icon }}</mat-icon>
+              <div mat-line>{{ file.text }}</div>
+            </mat-list-item></mat-list
+          ></mat-card
+        >
+      </div></mat-tab
+    >
+    <mat-tab label="Branches"
+      ><div>
+        <branches-list></branches-list></div
+    ></mat-tab>
+    <mat-tab label="Pull requests">Content 2</mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,32 @@
+<div class="branches-list-wrapper">
+  <div class="new-branch-section">
+    <button mat-raised-button color="primary" (click)="openNewBranchDialog()">
+      New branch
+    </button>
+  </div>
+  <div class="tab-branches">
+    <mat-card *ngFor="let branch of branches"
+      ><div class="branch-inside">
+        {{ branch.name }}
+        <div class="actions">
+          <button
+            mat-mini-fab
+            color="accent"
+            aria-label="Example icon button with a plus one icon"
+            (click)="openEditBranchDialog(branch)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-mini-fab
+            color="accent"
+            aria-label="Example icon button with a plus one icon"
+            (click)="deleteBranch(branch)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div></mat-card
+    >
+  </div>
+</div>

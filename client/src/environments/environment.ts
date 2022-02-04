@@ -22,7 +22,8 @@ export const environment = {
   stateChange: 'api/stateChange',
   pullReq: 'api/pullReq',
   issue: 'api/issue',
-  history: 'api/history'
+  history: 'api/history',
+  branch: 'api/branch',
 };
 
 /*
