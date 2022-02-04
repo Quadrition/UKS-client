@@ -38,6 +38,7 @@ import { NewTaskComponent } from '../components/task/new-task/new-task.component
 import { AllTasksComponent } from '../components/task/all-tasks/all-tasks.component';
 import { EditTaskComponent } from '../components/task/edit-task/edit-task.component';
 import { UserChooserComponent } from '../components/user/user-chooser/user-chooser.component';
+import { ProfileDetailsComponent } from '../components/user/profile-details/profile-details.component';
 
 
 export const routes: Routes = [
@@ -261,6 +262,12 @@ export const routes: Routes = [
       data: { expectedRoles: 'ROLE_USER' }
    },
    
+   {
+      path: 'profile',
+      component: ProfileDetailsComponent,
+      canActivate: [RoleGuard],
+      data: { expectedRoles: 'ROLE_USER' }
+   },
     
     // {
     // putanja kojoj moze da pristupi samo registrivani korisnik sa konkretnom ulogom

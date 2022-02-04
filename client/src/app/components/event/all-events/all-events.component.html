@@ -1,43 +1,92 @@
 <br><br>
-<div style="margin-left: 20px;">
-  <br>
-  <table class="styled-table">
-    <thead>
-      <tr>
-        <th></th>
-        <h1>All Events</h1>
-      </tr>
-      <tr>
-        <th>Creation time</th>
-        <th>Task</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let event of events">
-        <td>{{event.creationTime | date}}</td>
-        <td>Task {{event.task?.id}} by {{event.task?.creator?.username}} </td>
-      </tr>
-      <tr>
-    </tbody>
-  </table>
+<br><br>
+<form class="reactiveForm" [formGroup]="searchForm" (ngSubmit)="search()"
+  style="display: block; width: 350px; height: 80px; margin-left:auto; margin-right:auto;">
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Search by id</mat-label>
+      <input id="searchContent" matInput formControlName="id">
+    </mat-form-field>
+    <div style="display: inline-block;">
+      <mat-dialog-actions align="left">
+        <button id="submitSearch" type="submit" mat-raised-button color="success">Search</button>
+        <button id="refresh" (click)="refresh()" mat-raised-button style="margin-left: 15px;">Refresh</button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+</form>
+
+<br><br>
+<br><br>
+<div>
+  <div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table" *ngIf="foundEvent != undefined">
+      <thead>
+        <tr>
+          <th>Found</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>Creation time</th>
+          <th>Task</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{foundEvent.creationTime | date}}</td>
+          <td>Task {{foundEvent.task?.id}} by {{foundEvent.task?.creator?.username}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <br><br>
+  <br><br>
 
-  <table class="styled-table">
+  <div style="margin-left: 20px;">
+    <br>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th></th>
+          <h1>All Events</h1>
+        </tr>
+        <tr>
+          <th>Creation time</th>
+          <th>Task</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{event.creationTime | date}}</td>
+          <td>Task {{event.task?.id}} by {{event.task?.creator?.username}} </td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
 
-    <tbody>
-      <tr>
-        <th>Go to Comments</th>
-        <th><button mat-raised-button (click)="goToComments()">Comments</button></th>
-      </tr>
-      <tr>
-        <th>Go to Label Applications</th>
-        <th><button mat-raised-button (click)="goToLabelApplications()">Label Applications</button></th>
-      </tr>
-      <tr>
-        <th>Go to State Changes</th>
-        <th><button mat-raised-button (click)="goToStateChanges()">State Changes</button></th>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <br><br>
+
+    <table class="styled-table">
+
+      <tbody>
+        <tr>
+          <th>Go to Comments</th>
+          <th><button mat-raised-button (click)="goToComments()">Comments</button></th>
+        </tr>
+        <tr>
+          <th>Go to Label Applications</th>
+          <th><button mat-raised-button (click)="goToLabelApplications()">Label Applications</button></th>
+        </tr>
+        <tr>
+          <th>Go to State Changes</th>
+          <th><button mat-raised-button (click)="goToStateChanges()">State Changes</button></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <br><br>
+  <br><br>

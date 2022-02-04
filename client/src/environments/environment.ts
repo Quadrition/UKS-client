@@ -21,7 +21,8 @@ export const environment = {
   task: 'api/task',
   stateChange: 'api/stateChange',
   pullReq: 'api/pullReq',
-  issue: 'api/issue'
+  issue: 'api/issue',
+  history: 'api/history'
 };
 
 /*
