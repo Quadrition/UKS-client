@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { Branch } from 'src/app/model/Branch';
+import { BranchService } from 'src/app/services/branch/branch.service';
 import { EditBranchDialogComponent } from '../edit-branch-dialog/edit-branch-dialog.component';
 import { NewBranchDialogComponent } from '../new-branch-dialog/new-branch-dialog.component';
 
@@ -10,8 +12,12 @@ import { NewBranchDialogComponent } from '../new-branch-dialog/new-branch-dialog
   styleUrls: ['./branches-list.component.scss'],
 })
 export class BranchesListComponent implements OnInit {
-  constructor(public dialog: MatDialog) {
-    this.branches = [{ name: 'jaja', id: 0 }];
+  constructor(
+    public dialog: MatDialog,
+    public branchService: BranchService,
+    private toastr: ToastrService
+  ) {
+    this.branches = [];
   }
   public branches: Array<Branch>;
 
@@ -22,7 +28,13 @@ export class BranchesListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.branches.push({ name: result, id: this.branches.length });
+      const branch = { name: result };
+
+      this.branchService.addNew(branch).subscribe((res) => {
+        console.log(res);
+        this.toastr.success('Branch added!');
+        this.branches.push({ name: res.name, id: res.id });
+      });
     });
   }
 
@@ -33,16 +45,28 @@ export class BranchesListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      const found = this.branches.find((curr) => curr.id == branch.id);
-      if (found) {
-        found.name = result;
-      }
+      console.log(result);
+      this.branchService.edit(branch.id, result).subscribe((res) => {
+        console.log(res);
+        const found = this.branches.find((curr) => curr.id == branch.id);
+        if (found) {
+          found.name = res.name;
+        }
+      });
     });
   }
 
   deleteBranch(branch: Branch): void {
-    this.branches = this.branches.filter((curr) => curr.id !== branch.id);
+    this.branchService.delete(branch.id).subscribe((res) => {
+      console.log(res);
+      this.branches = this.branches.filter((curr) => curr.id !== branch.id);
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.branchService.getAll().subscribe((res) => {
+      console.log(res);
+      this.branches = res.body;
+    });
+  }
 }
