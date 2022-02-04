@@ -2,11 +2,13 @@ import { DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '../material-module';
 import { UserChooserComponent } from './user-chooser/user-chooser.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 
 @NgModule({
   declarations: [
    
-    UserChooserComponent
+    UserChooserComponent,
+         ProfileDetailsComponent
   ],
   imports: [MaterialModule],
   exports: [],

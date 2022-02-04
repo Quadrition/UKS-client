@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,11 +15,14 @@ import { ConfirmationComponent, ConfirmDialogModel } from '../../shared/confirma
 export class AllEventsComponent implements OnInit {
 
   events: Event[] = [];
+  foundEvent!: Event;
   result: any;
+  searchForm!: FormGroup;
 
   constructor(
     private eventService: EventService,
     public dialog: MatDialog,
+    private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
   ) { }
@@ -28,6 +32,24 @@ export class AllEventsComponent implements OnInit {
       res => {
         this.events = res.body as Event[];
       });
+
+    this.searchForm = this.fb.group({
+      id: ['']
+    });
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+  search(): void {
+    if (this.searchForm.value.id != "") {
+      this.eventService.search(this.searchForm.value.id).subscribe(
+        res => {
+          this.foundEvent = res.body as Event;
+        }
+      )
+    }
   }
 
   goToComments(): void {

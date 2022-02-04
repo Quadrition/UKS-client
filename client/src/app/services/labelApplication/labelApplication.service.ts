@@ -24,6 +24,16 @@ export class LabelApplicationService {
     return this.http.get(`${environment.baseUrl}/${environment.labelApplication}`, queryParams).pipe(map(res => res));
   }
 
+  search(id: any): Observable<any> {
+    let queryParams = {};
+    queryParams = {
+      headers: this.headers,
+      observe: 'response',
+      params: new HttpParams()
+    };
+    return this.http.get(`${environment.baseUrl}/${environment.labelApplication}/search/` + id, queryParams).pipe(map(res => res));
+  }
+
   edit(labelApplication: any) {
     return this.http.put(`${environment.baseUrl}/${environment.labelApplication}`, labelApplication, { headers: this.headers, responseType: 'json' });
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -16,12 +16,14 @@ import { ConfirmationComponent, ConfirmDialogModel } from '../../shared/confirma
 export class AllCommentsComponent implements OnInit {
 
   comments: Comment[] = [];
+  foundComment!: Comment;
   result: any;
   searchForm!: FormGroup;
 
   constructor(
     private commentService: CommentService,
     public dialog: MatDialog,
+    private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
     private location: Location,
@@ -32,6 +34,24 @@ export class AllCommentsComponent implements OnInit {
       res => {
         this.comments = res.body as Comment[];
       });
+
+    this.searchForm = this.fb.group({
+      id: ['']
+    });
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
+  search(): void {
+    if (this.searchForm.value.id != "") {
+      this.commentService.search(this.searchForm.value.id).subscribe(
+        res => {
+          this.foundComment = res.body as Comment;
+        }
+      )
+    }
   }
 
   edit(id: any): void {

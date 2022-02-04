@@ -1,3 +1,5 @@
+import { EditIssueComponent } from './../components/issue/edit-issue/edit-issue.component';
+import { NewIssueComponent } from './../components/issue/new-issue/new-issue.component';
 import { EditPullRequestComponent } from './../components/pullRequest/edit-pull-request/edit-pull-request.component';
 import { AllPullRequestsComponent } from './../components/pullRequest/all-pull-requests/all-pull-requests.component';
 import { PullReqModule } from './../components/pullRequest/pull-request.module';
@@ -37,6 +39,7 @@ import { AllTasksComponent } from '../components/task/all-tasks/all-tasks.compon
 import { EditTaskComponent } from '../components/task/edit-task/edit-task.component';
 import { UserChooserComponent } from '../components/user/user-chooser/user-chooser.component';
 import { RepoComponent } from '../components/gitRepo/repo/repo.component';
+import { ProfileDetailsComponent } from '../components/user/profile-details/profile-details.component';
 
 export const routes: Routes = [
   {
@@ -88,6 +91,18 @@ export const routes: Routes = [
   {
     path: 'gitRepo/edit/:id',
     component: EditGitRepoComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'issue/new/:pullReqId',
+    component: NewIssueComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'issue/edit/:id',
+    component: EditIssueComponent,
     canActivate: [RoleGuard],
     data: { expectedRoles: 'ROLE_USER' },
   },
@@ -248,6 +263,12 @@ export const routes: Routes = [
   {
     path: 'add-developers/:projectId',
     component: UserChooserComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'profile',
+    component: ProfileDetailsComponent,
     canActivate: [RoleGuard],
     data: { expectedRoles: 'ROLE_USER' },
   },
