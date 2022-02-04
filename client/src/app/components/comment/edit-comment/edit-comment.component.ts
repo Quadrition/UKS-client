@@ -24,7 +24,6 @@ export class EditCommentComponent implements OnInit {
   selectedTask: any;
   loading = false;
   commentId: any;
-  history: History[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -56,11 +55,7 @@ export class EditCommentComponent implements OnInit {
         this.selectedTask = this.comment.task;
       }
     );
-    this.historyService.getHistory("comment"+this.commentId).subscribe(
-      res => {
-        this.history = res.body as History[];
-      }
-    )
+
   }
 
   createForm(): void {
@@ -72,9 +67,9 @@ export class EditCommentComponent implements OnInit {
   }
 
   saveChanges(): void {
-    if(this.comment.content != this.form.value.content){
-      let input = "comment"+this.commentId + " changed content from "+this.comment.content + " to " +this.form.value.content;
-      this.historyService.addNew({comment: input}).subscribe(
+    if (this.comment.content != this.form.value.content) {
+      let input = "comment" + this.commentId + " changed content from " + this.comment.content + " to " + this.form.value.content;
+      this.historyService.addNew({ comment: input }).subscribe(
         res => {
           console.log("History added");
         }
@@ -85,9 +80,9 @@ export class EditCommentComponent implements OnInit {
     if (this.task === undefined) {
       this.task = this.form.value.task;
     }
-    if(this.task != this.comment.task){
-      let input = "comment"+this.commentId + " changed task from "+this.comment.task?.id + " to " +this.task.id;
-      this.historyService.addNew({comment: input}).subscribe(
+    if (this.task != this.comment.task) {
+      let input = "comment" + this.commentId + " changed task from " + this.comment.task?.id + " to " + this.task.id;
+      this.historyService.addNew({ comment: input }).subscribe(
         res => {
           console.log("History added");
         }
