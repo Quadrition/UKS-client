@@ -13,11 +13,12 @@
           {{req.name}} 
         </mat-panel-title>
         <button style="margin-right: 6%;" (click)= "edit(req.id)">Edit</button>
+        <button style="margin-right: 6%;" (click)= "addNewIssue(req.id)">Add new issue</button>
       <!--  <mat-panel-description>
           Currently I am {{panelOpenState ? 'open' : 'closed'}}
         </mat-panel-description> -->
       </mat-expansion-panel-header>
-      <button mat-stroked-button color="accent" *ngFor="let issue of req.issues" (click)= "goToIssue()" style='margin-right:16px'>{{issue.title}}</button> 
+      <button mat-stroked-button color="accent" *ngFor="let issue of req.issues" (click)= "goToIssue(issue.id)" style='margin-right:16px'>{{issue.title}}</button> 
     
     </mat-expansion-panel>
   </mat-accordion>

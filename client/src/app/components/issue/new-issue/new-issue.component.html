@@ -1,0 +1,67 @@
+
+<br><br>
+<body>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <form class="reactiveForm" [formGroup]="form"  class="form-inline my-2 my-lg-0" *ngIf="!loading">
+        <div class="example-container" style="margin-left: 50px;">
+            <table class="styled-table">
+                <thead>
+                <tr>         
+                    <th colspan="4">Create new issue</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td >
+                        <mat-form-field appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName="title"  required>
+                            <mat-error *ngIf="form.controls.title.touched && form.controls.title.invalid">
+                                <span *ngIf="form.controls.title.errors?.required">This field is mandatory.</span>
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field  appearance="fill">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput required formControlName="description"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+        <mat-error *ngIf="form.controls.description.touched && form.controls.description.invalid">
+            <span *ngIf="form.controls.description.errors?.required">This field is mandatory.</span>
+        </mat-error>
+                    </td>
+                    
+                    <td style="text-align: right;">
+                        <mat-dialog-actions>
+                            <button mat-button color="warn" (click)="cancel()" >
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">clear</mat-icon>
+                            </button>
+                            
+                        </mat-dialog-actions>
+                    </td>
+                    
+                    <td>
+                        <mat-dialog-actions>
+                            <button  type="submit" mat-button color="primary"  id="saveNewResort"(click)="addNewIssue()" style="margin-left: 45px;">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">checked</mat-icon>
+                            </button>
+                        </mat-dialog-actions>
+
+                    </td>
+                 
+                   
+                </tr>     
+               
+            </tbody>
+            </table>
+            <br><br>
+            
+        <br><br>
+        </div>
+    </form>
+</body>

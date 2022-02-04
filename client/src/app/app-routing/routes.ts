@@ -1,3 +1,5 @@
+import { EditIssueComponent } from './../components/issue/edit-issue/edit-issue.component';
+import { NewIssueComponent } from './../components/issue/new-issue/new-issue.component';
 import { EditPullRequestComponent } from './../components/pullRequest/edit-pull-request/edit-pull-request.component';
 import { AllPullRequestsComponent } from './../components/pullRequest/all-pull-requests/all-pull-requests.component';
 import { PullReqModule } from './../components/pullRequest/pull-request.module';
@@ -86,6 +88,17 @@ export const routes: Routes = [
       canActivate: [RoleGuard],
       data: {expectedRoles: 'ROLE_USER'}
      },   
+     {
+      path: 'issue/new/:pullReqId',
+      component: NewIssueComponent,
+      canActivate: [RoleGuard],
+      data: {expectedRoles: 'ROLE_USER'}
+   },{
+   path: 'issue/edit/:id',
+   component: EditIssueComponent,
+   canActivate: [RoleGuard],
+   data: {expectedRoles: 'ROLE_USER'}
+  }, 
 
      {
       path: 'stateChange',
@@ -248,6 +261,7 @@ export const routes: Routes = [
       canActivate: [RoleGuard],
       data: { expectedRoles: 'ROLE_USER' }
    },
+   
    {
       path: 'profile',
       component: ProfileDetailsComponent,
