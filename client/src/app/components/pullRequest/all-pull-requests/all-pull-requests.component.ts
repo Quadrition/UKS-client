@@ -32,8 +32,9 @@ export class AllPullRequestsComponent implements OnInit {
     this.router.navigate(['/issue/new/'+id])
   }
 
-  goToIssue(){
-    this.router.navigate(['/pullReq/'])
+  
+  goToIssue(id:any){
+    this.router.navigate(['/issue/edit/'+id])
   }
   reqs = [ "Item 1", "Item 2", "Item 3", "Item 4"];
   pullReqs: PullRequest[] = [];
