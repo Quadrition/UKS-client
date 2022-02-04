@@ -60,6 +60,22 @@ export class UserService {
 
     }
 
+    getCurrent(): Observable<any> {
+
+        let queryParams = {};
+        queryParams = {
+            headers: this.headers,
+            observe: 'response',
+            params: new HttpParams()
+        };
+        return this.http.get(`${environment.baseUrl}/${environment.user}/current` , queryParams).pipe(map(res => res));
+
+    }
+
+    deactivate(user: any) {
+        return this.http.put(`${environment.baseUrl}/${environment.user}/deactivate`, user, { headers: this.headers, responseType: 'json' });
+
+    }
 
 
 }
