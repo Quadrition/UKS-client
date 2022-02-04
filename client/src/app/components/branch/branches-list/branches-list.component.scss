@@ -1,0 +1,38 @@
+.tab-branches {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.tab-branches-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.branch-inside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+.new-branch-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.branches-list-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}

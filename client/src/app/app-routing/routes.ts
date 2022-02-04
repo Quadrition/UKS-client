@@ -36,223 +36,227 @@ import { NewTaskComponent } from '../components/task/new-task/new-task.component
 import { AllTasksComponent } from '../components/task/all-tasks/all-tasks.component';
 import { EditTaskComponent } from '../components/task/edit-task/edit-task.component';
 import { UserChooserComponent } from '../components/user/user-chooser/user-chooser.component';
-
+import { RepoComponent } from '../components/gitRepo/repo/repo.component';
 
 export const routes: Routes = [
-    {
-       path: 'login',
-       component: LoginPageComponent,
-       canActivate: [LoginGuard] // putanja kojoj moze da pristupi korisnik samo ukoliko NIJE ulogovan
-    },
-    {
-      path: 'register',
-      component: RegistrationComponent,
-      canActivate: [LoginGuard] // putanja kojoj moze da pristupi korisnik samo ukoliko NIJE ulogovan
-   },
-    {
-        path: 'label',
-        component: AllLabelsComponent,
-        canActivate: [RoleGuard],
-        data: {expectedRoles: 'ROLE_USER'}
-     },
-     {
-        path: 'label/new/:projectId',
-        component: NewLabelComponent,
-        canActivate: [RoleGuard],
-        data: {expectedRoles: 'ROLE_USER'}
-     },
-     {
-        path: 'label/edit/:id',
-        component: EditLabelComponent,
-        canActivate: [RoleGuard],
-        data: {expectedRoles: 'ROLE_USER'}
-     },
-     {
-      path: 'gitRepo',
-      component: AllGitReposComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-     },
-     {
-      path: 'gitRepo/new',
-      component: NewGitRepoComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-     },  
-     {
-      path: 'gitRepo/edit/:id',
-      component: EditGitRepoComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-     },   
+  {
+    path: 'login',
+    component: LoginPageComponent,
+    canActivate: [LoginGuard], // putanja kojoj moze da pristupi korisnik samo ukoliko NIJE ulogovan
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent,
+    canActivate: [LoginGuard], // putanja kojoj moze da pristupi korisnik samo ukoliko NIJE ulogovan
+  },
+  {
+    path: 'label',
+    component: AllLabelsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'label/new/:projectId',
+    component: NewLabelComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'label/edit/:id',
+    component: EditLabelComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'gitRepo',
+    component: AllGitReposComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'gitRepo/view',
+    component: RepoComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'gitRepo/new',
+    component: NewGitRepoComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'gitRepo/edit/:id',
+    component: EditGitRepoComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
 
-     {
-      path: 'stateChange',
-      component: AllStateChangesComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-     },
+  {
+    path: 'stateChange',
+    component: AllStateChangesComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
 
-     {
-      path: 'project',
-      component: AllProjectsComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
- 
-   {
+  {
+    path: 'project',
+    component: AllProjectsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
 
-      path: 'stateChange/new',
-      component: NewStateChangeComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   }, 
-    {
-      path: 'project/new/:repoId',
-      component: NewProjectComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
+  {
+    path: 'stateChange/new',
+    component: NewStateChangeComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'project/new/:repoId',
+    component: NewProjectComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'stateChange/edit/:id',
+    component: EditStateChangeComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'project/edit/:id',
+    component: EditProjectComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'project/details/:id',
+    component: ProjectDetailsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'milestone',
+    component: AllMilestonesComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'milestone/new/:projectId',
+    component: NewMilestoneComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'milestone/edit/:id',
+    component: EditMilestoneComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'event',
+    component: AllEventsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'event/new',
+    component: NewEventComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'event/edit/:id',
+    component: EditEventComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'comment',
+    component: AllCommentsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'comment/new',
+    component: NewCommentComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'comment/edit/:id',
+    component: EditCommentComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'labelApplication',
+    component: AllLabelApplicationsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'labelApplication/new',
+    component: NewLabelApplicationComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'labelApplication/edit/:id',
+    component: EditLabelApplicationComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'register',
+    //component: RegisterPageComponent,
+    component: RegistrationComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'pullReq',
+    component: AllPullRequestsComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'pullReq/edit/:id',
+    component: EditPullRequestComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'task',
+    component: AllTasksComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'task/new',
+    component: NewTaskComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
+  {
+    path: 'task/edit/:id',
+    component: EditTaskComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
 
-      path: 'stateChange/edit/:id',
-      component: EditStateChangeComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-    {
-      path: 'project/edit/:id',
-      component: EditProjectComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'project/details/:id',
-      component: ProjectDetailsComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'milestone',
-      component: AllMilestonesComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'milestone/new/:projectId',
-      component: NewMilestoneComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'milestone/edit/:id',
-      component: EditMilestoneComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'event',
-      component: AllEventsComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'event/new',
-      component: NewEventComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'event/edit/:id',
-      component: EditEventComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'comment',
-      component: AllCommentsComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'comment/new',
-      component: NewCommentComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'comment/edit/:id',
-      component: EditCommentComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'labelApplication',
-      component: AllLabelApplicationsComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'labelApplication/new',
-      component: NewLabelApplicationComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-   {
-      path: 'labelApplication/edit/:id',
-      component: EditLabelApplicationComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-   },
-    {
-        path: 'register',
-        //component: RegisterPageComponent,
-        component: RegistrationComponent,
-        canActivate: [LoginGuard]
-    },
-    {
-      path: 'pullReq',
-      component: AllPullRequestsComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-     },
-     {
-      path: 'pullReq/edit/:id',
-      component: EditPullRequestComponent,
-      canActivate: [RoleGuard],
-      data: {expectedRoles: 'ROLE_USER'}
-     },
-    {
-      path: 'task',
-      component: AllTasksComponent,
-      canActivate: [RoleGuard],
-      data: { expectedRoles: 'ROLE_USER' }
-   },
-   {
-      path: 'task/new',
-      component: NewTaskComponent,
-      canActivate: [RoleGuard],
-      data: { expectedRoles: 'ROLE_USER' }
-   },
-   {
-      path: 'task/edit/:id',
-      component: EditTaskComponent,
-      canActivate: [RoleGuard],
-      data: { expectedRoles: 'ROLE_USER' }
-   },
+  {
+    path: 'add-developers/:projectId',
+    component: UserChooserComponent,
+    canActivate: [RoleGuard],
+    data: { expectedRoles: 'ROLE_USER' },
+  },
 
-   {
-      path: 'add-developers/:projectId',
-      component: UserChooserComponent,
-      canActivate: [RoleGuard],
-      data: { expectedRoles: 'ROLE_USER' }
-   },
-    
-    // {
-    // putanja kojoj moze da pristupi samo registrivani korisnik sa konkretnom ulogom
-    //     path: 'favorites',
-    //     component: FavoriteComponent,
-    //     canActivate: [RoleGuard],
-    //     data: {expectedRoles: 'ROLE_REGISTERED_USER'}
-    // },
+  // {
+  // putanja kojoj moze da pristupi samo registrivani korisnik sa konkretnom ulogom
+  //     path: 'favorites',
+  //     component: FavoriteComponent,
+  //     canActivate: [RoleGuard],
+  //     data: {expectedRoles: 'ROLE_REGISTERED_USER'}
+  // },
 ];
