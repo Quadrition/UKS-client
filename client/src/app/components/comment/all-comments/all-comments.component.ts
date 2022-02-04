@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Comment } from 'src/app/model/Comment';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { ConfirmationComponent, ConfirmDialogModel } from '../../shared/confirmation/confirmation.component';
+import { HistoryService } from 'src/app/services/history/history.service';
+import { History } from 'src/app/model/History';
 
 @Component({
   selector: 'app-all-comments',
@@ -19,6 +21,7 @@ export class AllCommentsComponent implements OnInit {
   foundComment!: Comment;
   result: any;
   searchForm!: FormGroup;
+  history: History[] = [];
 
   constructor(
     private commentService: CommentService,
@@ -27,6 +30,7 @@ export class AllCommentsComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private location: Location,
+    private historyService: HistoryService
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +38,11 @@ export class AllCommentsComponent implements OnInit {
       res => {
         this.comments = res.body as Comment[];
       });
-
+      this.historyService.getHistory("comment").subscribe(
+        res => {
+          this.history = res.body as History[];
+        }
+      )
     this.searchForm = this.fb.group({
       id: ['']
     });

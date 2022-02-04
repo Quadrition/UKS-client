@@ -69,6 +69,10 @@ export class ProfileDetailsComponent implements OnInit {
     this.userService.edit(this.currentUser).subscribe(
       res => {
         this.toastr.success("Profile edited");
+        const auth: any = {};
+        auth.username = this.regForm.value.username;
+        auth.password = this.regForm.value.password;
+        
       }, error => {
         this.toastr.error("Cannot edit profile")
       }

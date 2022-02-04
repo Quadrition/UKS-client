@@ -5,7 +5,7 @@
     <table class="styled-table">
         <thead>
         <tr>         
-            <th>Registration</th>
+            <th>Profile details</th>
             <th></th>
             <th></th>
         </tr>
@@ -40,10 +40,7 @@
             <th>Email</th>
             <th>
                 <mat-form-field appearance="fill">
-                    <input matInput formControlName="email" required>
-                    <mat-error *ngIf="regForm.controls.email.touched && regForm.controls.email.invalid">
-                        <span *ngIf="regForm.controls.email.errors?.required">This field is mandatory.</span>
-                    </mat-error>
+                    <input matInput formControlName="email" readonly>
                 </mat-form-field>
             </th>
             <th></th>
